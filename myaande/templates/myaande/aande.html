@@ -7,5 +7,15 @@
 </head>
 <body>
     <h1>Anything and Everything</h1>
+
+    <table>
+        {% for post in posts %}
+            <tr>
+                <td>{{ post.title }}</td>
+                <td>{{ post.description }}</td>
+                <td>{{ post.dateposted }}</td>
+            </tr>
+        {% endfor %}
+    </table>
 </body>
 </html>

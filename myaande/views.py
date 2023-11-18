@@ -1,5 +1,14 @@
 from django.shortcuts import render
+from .models import Post
 
 # Create your views here.
+
+
 def get_myaande(request):
-    return render(request, 'myaande/aande.html')
+    posts = Post.objects.all()
+    collection = {
+        'posts': posts
+    }
+    return render(request, 'myaande/aande.html', collection)
+
+
