@@ -11,4 +11,7 @@ def get_myaande(request):
     }
     return render(request, 'myaande/aande.html', collection)
 
+def post_myaande(request):
+    return render(request, 'myaande/add_post.html')
+
 

@@ -15,7 +15,10 @@
                 <td>{{ post.description }}</td>
                 <td>{{ post.dateposted }}</td>
             </tr>
+        {% empty %}
+        <tr><td> Be the first to post!</td></tr>
         {% endfor %}
     </table>
+    <a href="/addapost">Add a post</a>
 </body>
 </html>

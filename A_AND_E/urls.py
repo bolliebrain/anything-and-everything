@@ -15,9 +15,10 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from myaande.views import get_myaande
+from myaande.views import get_myaande, post_myaande
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', get_myaande, name='home')
+    path('', get_myaande, name='seeposts'),
+    path('addapost', post_myaande, name='addpost')
 ]
