@@ -1,1 +1,1 @@
-web: gunicorn anything-and-everything.wsgi
+web: gunicorn A_AND_E.wsgi
