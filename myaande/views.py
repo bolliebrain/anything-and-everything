@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect
 from .models import Post
+from .forms import PostForm
 
 # Create your views here.
 
@@ -13,12 +14,14 @@ def get_myaande(request):
 
 def post_myaande(request):
     if request.method == 'POST':
-        title = request.POST.get('title_name')
-        description = request.POST.get('description_name')
-        dateposted = request.POST.get('date_name')
-        Post.objects.create(title=title, description=description, dateposted=dateposted)
-
-        return redirect('seeposts')
-    return render(request, 'myaande/add_post.html')
+        form = PostForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('seeposts')
+    form = PostForm()
+    collection = {
+        'form' : form
+    }
+    return render(request, 'myaande/add_post.html', collection)
 
 
