@@ -1,1 +1,1 @@
-web: gunicorn myaande.wsgi
+web: gunicorn anything-and-everything.wsgi
