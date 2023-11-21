@@ -5,17 +5,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
+
 <body>
     <h1>Welcome to Anything and Everything</h1>
-    <p>
-        Sign Up
-    </p>
-    <p>
-        Login
-    </p>
-    <p>
-        Logout
-    </p>
+            <p><a href="{% url 'seeposts' %}">Home</a>
+            </p>
+        {% if user.is_authenticated %}
+            <p><a href="{% url 'account_logout' %}">Logout</a>
+            </p>
+        {% else %}
+            <p><a href="{% url 'account_signup' %}">Sign Up</a>
+            </p>
+            <p><a href="{% url 'account_login' %}">Login</a>
+            </p>
+        {% endif %}
+            
+    {% block content %}
     <p>
         See our posts below:
     </p>
@@ -29,7 +34,10 @@
         {% empty %}
         <tr><td> Be the first to post!</td></tr>
         {% endfor %}
+        {% if user.is_authenticated %}
+        <a href="/addapost">Add a post</a>
+        {% endif %}
     </table>
-
+    {% endblock %}
 </body>
 </html>

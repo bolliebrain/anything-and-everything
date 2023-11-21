@@ -17,6 +17,7 @@ from django.contrib import admin
 from django.urls import path, include
 from myaande.views import get_myaande, post_myaande
 
+
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', get_myaande, name='seeposts'),
