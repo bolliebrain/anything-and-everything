@@ -10,7 +10,7 @@ def get_myaande(request):
     collection = {
         'posts': posts
     }
-    return render(request, 'myaande/aande.html', collection)
+    return render(request, 'myaande/basehome.html', collection)
 
 def post_myaande(request):
     if request.method == 'POST':
