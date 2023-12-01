@@ -15,7 +15,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-from myaande.views import get_myaande, post_myaande
+from myaande.views import get_myaande, post_myaande, edit_myaande
 
 
 urlpatterns = [
@@ -23,4 +23,5 @@ urlpatterns = [
     path('', get_myaande, name='seeposts'),
     path('addapost', post_myaande, name='addpost'),
     path('accounts/', include('allauth.urls')),
+    path('edit/<post_id>', edit_myaande, name='editpost'),
 ]

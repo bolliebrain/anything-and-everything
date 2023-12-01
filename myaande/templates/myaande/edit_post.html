@@ -1,0 +1,15 @@
+{% extends "myaande/basehome.html" %}
+
+{% block content %}
+    <h1>Edit my Post</h1>
+    <form method="POST">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <div>
+            <p>
+                <button type="submit">Update Post</button>
+            </p>
+        </div>
+    </form>
+{% endblock %}
+</html>
