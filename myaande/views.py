@@ -4,7 +4,6 @@ from .forms import PostForm
 
 # Create your views here.
 
-
 def get_myaande(request):
     posts = Post.objects.all()
     collection = {
@@ -37,3 +36,7 @@ def edit_myaande(request, post_id):
     }
     return render(request, 'myaande/edit_post.html', collection)
 
+def delete_myaande(request, post_id):
+    post = get_object_or_404(Post, id=post_id)
+    post.delete()
+    return redirect('seeposts')
