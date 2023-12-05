@@ -48,7 +48,6 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'cloudinary',
     'myaande',
-    'commentaande',
     'crispy_forms',
     'accounts',
 ]
