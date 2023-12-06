@@ -12,3 +12,9 @@ class Post(models.Model):
     def __str__(self):
         return self.title
 
+class Comment(models.Model):
+    comment = models.CharField(max_length=200, null=False, blank=False)
+    datecommented = models.DateTimeField(auto_now_add=True, null=True)
+
+    def __str__(self):
+        return self.comment

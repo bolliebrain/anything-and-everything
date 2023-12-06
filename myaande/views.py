@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from .models import Post
-from .forms import PostForm
+from .forms import PostForm, CommentForm
 
 # Create your views here.
 
@@ -40,3 +40,16 @@ def delete_myaande(request, post_id):
     post = get_object_or_404(Post, id=post_id)
     post.delete()
     return redirect('seeposts')
+
+def comment_aande(request, post_id):
+    post = get_object_or_404(Post, id=post_id)
+    if request.method == 'POST':
+        comment = CommentForm(request.POST)
+        if comment.is_valid():
+            comment.save()
+            return redirect('seeposts')
+    comment = CommentForm(instance=post)
+    collection = {
+        'comments' : comment
+    }
+    return render(request, 'myaande/add_post.html', collection)

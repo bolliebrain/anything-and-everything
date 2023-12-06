@@ -41,6 +41,17 @@
                         <button>Delete</button>
                     </a>
                 </td>
+            {% for comment in comments %}
+                <tr>
+                    <td>{{ comment.comment }}</td>
+                    <td>{{ comment.datecommented }}</td>
+                {% endfor %}
+                </tr>
+                <td>
+                    <a href="/comment/{{ post.id }}">
+                        <button>Comment</button>
+                    </a>
+                </td>
                 {% endif %}
             </tr>
         {% empty %}
