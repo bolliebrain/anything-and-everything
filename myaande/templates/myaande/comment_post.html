@@ -19,5 +19,13 @@
             </p>
         </div>
     </form>
+    <table>
+    {% for comment in comments %}
+        <tr>
+            <td>{{ comment.comment }}</td>
+            <td>{{ comment.dateposted }}</td>
+        </tr>
+    {% endfor %}
+    </table>
 {% endblock %}
 </html>
