@@ -41,15 +41,27 @@ def delete_myaande(request, post_id):
     post.delete()
     return redirect('seeposts')
 
-def comment_aande(request, post_id):
-    post = get_object_or_404(Post, id=post_id)
-    if request.method == 'POST':
-        comment = CommentForm(request.POST)
-        if comment.is_valid():
-            comment.save()
-            return redirect('seeposts')
-    comment = CommentForm(instance=post)
-    collection = {
-        'comments' : comment
-    }
-    return render(request, 'myaande/add_post.html', collection)
+def comment_aande(request):
+    return render(request, 'myaande/comment_post.html',
+    {
+        "comment_form": CommentForm
+    })
+
+    comment_form = CommentForm(request.POST)
+
+    if comment_form.is_valid():
+        comment_form.instance.name = request.user.username
+        comment=comment_form.save(commit=False)
+        comment.post = post
+        comment.save()
+    else:
+        comment_form = CommentForm()
+    
+#return render(
+#request, 'myaande/basehome.html',
+#        {
+#            "post": post,
+#            "comments": comments,
+#            "commented": True
+#        }
+#    )

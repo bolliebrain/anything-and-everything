@@ -25,5 +25,5 @@ urlpatterns = [
     path('accounts/', include('allauth.urls')),
     path('edit/<post_id>', views.edit_myaande, name='editpost'),
     path('delete/<post_id>', views.delete_myaande, name='delete'),
-    path('comment/<post_id>', views.comment_aande, name='comment'),
+    path('comment/', views.comment_aande, name='comment'),
 ]
