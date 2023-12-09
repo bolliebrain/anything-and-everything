@@ -8,12 +8,7 @@
         Your comment has been submitted!
     </div>
     {% endif %}
-    <h1>Leave a Comment</h1>
-    <p> From {{ user.username }}</p>
-    <form method="post">
-        {{ comment_form | crispy }}
-        {% csrf_token %}
-        <div>
+    <div>
         {% for post in posts %}
             <p>
                 <td>{{ post.title }}</td>
@@ -21,13 +16,19 @@
                 <td>{{ post.dateposted }}</td>
                 <button type="submit">Add Comment</button>
             </p>
-        </div>
         {% endfor %}
+    </div>
+        
+    <h1>Leave a Comment</h1>
+    <p> From {{ user.username }}</p>
+    <form method="post">
+        {{ comment_form | crispy }}
+        {% csrf_token %}
     </form>
     <table>
     {% for comment in comments %}
         <tr>
-            <td>{{ user.username }}</td>
+            <td>{{ comment.user }}</td>
             <td>{{ comment.comment }}</td>
             <td>{{ comment.datecommented }}</td>
         </tr>

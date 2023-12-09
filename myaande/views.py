@@ -54,20 +54,9 @@ def comment_aande(request):
         comment_form = CommentForm()
     
     comment = Comment.objects.all()
-
+    
     collection = {
         'comment_form': CommentForm,
         'comments': comment,
     }
     return render(request, 'myaande/comment_post.html', collection)
-
-
-    
-#return render(
-#request, 'myaande/basehome.html',
-#        {
-#            "post": post,
-#            "comments": comments,
-#            "commented": True
-#        }
-#    )

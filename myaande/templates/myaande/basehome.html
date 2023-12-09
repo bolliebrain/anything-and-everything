@@ -30,6 +30,7 @@
                 <td>{{ post.title }}</td>
                 <td>{{ post.description }}</td>
                 <td>{{ post.dateposted }}</td>
+                <td>{{ post.username }}</td>
                 {% if user.is_authenticated %}
                 <td>
                     <a href="/edit/{{ post.id }}">
