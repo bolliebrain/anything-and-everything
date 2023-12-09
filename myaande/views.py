@@ -53,10 +53,14 @@ def comment_aande(request):
     else:
         comment_form = CommentForm()
     
+    comment = Comment.objects.all()
+
     collection = {
-        'comment_form': CommentForm
+        'comment_form': CommentForm,
+        'comments': comment,
     }
     return render(request, 'myaande/comment_post.html', collection)
+
 
     
 #return render(

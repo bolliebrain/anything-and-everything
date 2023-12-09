@@ -14,16 +14,22 @@
         {{ comment_form | crispy }}
         {% csrf_token %}
         <div>
+        {% for post in posts %}
             <p>
+                <td>{{ post.title }}</td>
+                <td>{{ post.description }}</td>
+                <td>{{ post.dateposted }}</td>
                 <button type="submit">Add Comment</button>
             </p>
         </div>
+        {% endfor %}
     </form>
     <table>
     {% for comment in comments %}
         <tr>
+            <td>{{ user.username }}</td>
             <td>{{ comment.comment }}</td>
-            <td>{{ comment.dateposted }}</td>
+            <td>{{ comment.datecommented }}</td>
         </tr>
     {% endfor %}
     </table>
