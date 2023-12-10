@@ -30,7 +30,7 @@ def edit_myaande(request, post_id):
     if request.method == 'POST':
         form = PostForm(request.POST, instance=post)
         if form.is_valid():
-            form.instance.name = request.user.username
+            form.instance.name = request.user
             form.save()
             return redirect('seeposts')
     form = PostForm(instance=post)
@@ -48,18 +48,18 @@ def comment_aande(request):
     if request.method == 'POST':
         comment_form = CommentForm(request.POST)
         if comment_form.is_valid():
-            comment_form.instance.name = request.user.username
-            comment=comment_form.save(commit=False)
-            comment_form.save()
+            comment = comment_form.save(commit=False)
+            comment.user = request.user
+            comment.save()
             return redirect ('comment')
             comment_form = CommentForm()
     else:
         comment_form = CommentForm()
     
-    comment = Comment.objects.all()
+    comments = Comment.objects.all()
     
     collection = {
         'comment_form': CommentForm,
-        'comments': comment
+        'comments': comments
     }
     return render(request, 'myaande/comment_post.html', collection)
