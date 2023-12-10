@@ -7,7 +7,7 @@ from .forms import PostForm, CommentForm
 def get_myaande(request):
     posts = Post.objects.all()
     collection = {
-        'posts': posts
+        'posts': posts,
     }
     return render(request, 'myaande/basehome.html', collection)
 
@@ -15,11 +15,13 @@ def post_myaande(request):
     if request.method == 'POST':
         form = PostForm(request.POST)
         if form.is_valid():
-            form.save()
+            post = form.save(commit=False)
+            post.user = request.user
+            post.save()
             return redirect('seeposts')
     form = PostForm()
     collection = {
-        'form' : form
+        'form': form,
     }
     return render(request, 'myaande/add_post.html', collection)
 
@@ -28,6 +30,7 @@ def edit_myaande(request, post_id):
     if request.method == 'POST':
         form = PostForm(request.POST, instance=post)
         if form.is_valid():
+            form.instance.name = request.user.username
             form.save()
             return redirect('seeposts')
     form = PostForm(instance=post)
@@ -57,6 +60,6 @@ def comment_aande(request):
     
     collection = {
         'comment_form': CommentForm,
-        'comments': comment,
+        'comments': comment
     }
     return render(request, 'myaande/comment_post.html', collection)
