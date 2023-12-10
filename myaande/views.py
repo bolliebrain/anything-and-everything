@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect, get_object_or_404
 from .models import Post, Comment
 from .forms import PostForm, CommentForm
 
+
 # Create your views here.
 
 def get_myaande(request):
@@ -44,22 +45,33 @@ def delete_myaande(request, post_id):
     post.delete()
     return redirect('seeposts')
 
-def comment_aande(request):
-    if request.method == 'POST':
-        comment_form = CommentForm(request.POST)
-        if comment_form.is_valid():
-            comment = comment_form.save(commit=False)
-            comment.user = request.user
-            comment.save()
-            return redirect ('comment')
+class CommentView():
+    def get(request):
+        comments = Comment.objects.get()
+        collection = {
+                "post": post,
+                "comments": comments,
+                "comment_form": CommentForm,
+                }
+        return render(
+            request, 'myaande/comment_post.html', collection)
+        
+    def post(request):
+        if request.method == 'POST':
+            comment_form = CommentForm(request.POST)
+            if comment_form.is_valid():
+                comment = comment_form.save(commit=False)
+                comment.user = request.user
+                comment.save()
+                return redirect ('comment')
+                comment_form = CommentForm()
+        else:
             comment_form = CommentForm()
-    else:
-        comment_form = CommentForm()
-    
-    comments = Comment.objects.all()
-    
-    collection = {
-        'comment_form': CommentForm,
-        'comments': comments
-    }
-    return render(request, 'myaande/comment_post.html', collection)
+
+        comments = Comment.objects.all()
+        collection = {
+            "post": post,
+            'comment_form': CommentForm,
+            'comments': comments
+        }
+        return render(request, 'myaande/comment_post.html', collection)

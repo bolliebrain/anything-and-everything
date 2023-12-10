@@ -1,29 +1,23 @@
 {% extends "myaande/basehome.html" %}
 
 {% block content %}
-
-{% load crispy_forms_tags %}
-    {% if commented %}
-    <div>
-        Your comment has been submitted!
-    </div>
-    {% endif %}
-    <div>
+<div>
         {% for post in posts %}
             <p>
                 <td>{{ post.title }}</td>
                 <td>{{ post.description }}</td>
                 <td>{{ post.dateposted }}</td>
-                <button type="submit">Add Comment</button>
             </p>
         {% endfor %}
     </div>
-        
+
+{% load crispy_forms_tags %}
     <h1>Leave a Comment</h1>
     <p> From {{ user.username }}</p>
     <form method="post">
         {{ comment_form | crispy }}
         {% csrf_token %}
+        <button type="submit">Add Comment</button>
     </form>
     <table>
     {% for comment in comments %}
