@@ -21,46 +21,7 @@
         {% endif %}
             
     {% block content %}
-    <p>
-        See our posts below:
-    </p>
-    <table>
-        {% for post in posts %}
-            <tr>
-                <td>{{ post.title }}</td>
-                <td>{{ post.description }}</td>
-                <td>{{ post.dateposted }}</td>
-                <td>{{ post.user }}</td>
-                {% if user.is_authenticated %}
-                    <td>
-                        <a href="/edit/{{ post.id }}">
-                            <button>Edit</button>
-                        </a>
-                    </td>
-                    <td>
-                        <a href="/delete/{{ post.id }}">
-                            <button>Delete</button>
-                        </a>
-                    </td>
-                
-                    <td>
-                        <a href="/comment/{{ comment.id }}">
-                            <button>Comment</button>
-                        </a>
-                    </td>
-                    {% for comment in comments %}
-                        <td>{{ comment.comment }}</td>
-                        <td>{{ comment.datecommented }}</td>
-                    {% endfor %}
-                {% endif %}
-            </tr>
-        {% empty %}
-        <tr><td> Be the first to post!</td></tr>
-        {% endfor %}
-        {% if user.is_authenticated %}
-        <a href="/addapost">Add a post</a>
-        {% endif %}
-    </table>
+    
     {% endblock %}
 </body>
 </html>

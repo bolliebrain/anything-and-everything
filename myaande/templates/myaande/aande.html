@@ -1,20 +1,50 @@
-{% extends "basehome.html" %}
+{% extends "myaande/basehome.html" %}
 
-
-<body>
-    <h1>Anything and Everything</h1>
-
+{% block content %}
+    <p>
+        See our posts below:
+    </p>
     <table>
-        {% for post in posts %}
-            <tr>
+        <tr>
+            {% for post in post_list %}
                 <td>{{ post.title }}</td>
                 <td>{{ post.description }}</td>
                 <td>{{ post.dateposted }}</td>
-            </tr>
-        {% empty %}
-        <tr><td> Be the first to post!</td></tr>
-        {% endfor %}
+                <td>{{ post.user }}</td>
+                {% if user.is_authenticated %}
+                    <td>
+                        <a href="/edit/{{ post.id }}">
+                            <button>Edit</button>
+                        </a>
+                    </td>
+                    <td>
+                        <a href="/delete/{{ post.id }}">
+                            <button>Delete</button>
+                        </a>
+                    </td>
+                    <td>
+                        <a href="/comment/{{ comment.id }}">
+                            <button>Comment</button>
+                        </a>
+                    </td>
+                </tr>
+                {% endif %}
+            {% endfor %}
+            {% if user.is_authenticated %}
+                <tr><a href="/addapost">Add a post</a></tr>
+            {% endif %}
+                    {% for comment in comments %}
+                    <td>{{ comment.comment }}</td>
+                    <td>{{ comment.datecommented }}</td>
+                    
+                
+                {% empty %}
+            <tr><td> Be the first to post!</td></tr>
+            {% endfor %}
     </table>
+    <body>
+{% endblock %}
+        
     
 </body>
 </html>

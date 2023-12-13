@@ -1,16 +1,22 @@
 from django.shortcuts import render, redirect, get_object_or_404
+from django.views.generic import ListView
 from .models import Post, Comment
 from .forms import PostForm, CommentForm
 
 
 # Create your views here.
 
-def get_myaande(request):
-    posts = Post.objects.all()
-    collection = {
-        'posts': posts,
-    }
-    return render(request, 'myaande/basehome.html', collection)
+class AandeView(ListView):
+    model = Post
+    queryset = Post.objects.all()
+    template_name = 'myaande/aande.html'
+
+#def get_myaande(request):
+#    posts = Post.objects.all()
+#    collection = {
+#        'posts': posts,
+#    }
+#    return render(request, 'myaande/aande.html', collection)
 
 def post_myaande(request):
     if request.method == 'POST':
