@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.views.generic import ListView
+from django.views import View
 from .models import Post, Comment
 from .forms import PostForm, CommentForm
 
@@ -18,19 +19,39 @@ class AandeView(ListView):
 #    }
 #    return render(request, 'myaande/aande.html', collection)
 
-def post_myaande(request):
-    if request.method == 'POST':
-        form = PostForm(request.POST)
+class PostAande(View):
+    form_class = PostForm
+    initial = {"key": "value"}
+    template_name = "myaande/add_post.html"
+
+    def get(self, request, *args, **kwargs):
+        form = self.form_class(initial=self.initial)
+        return render(request, self.template_name, {"form": form})
+    
+    def post(self, request, *args, **kwargs):
+        form = self.form_class(request.POST)
         if form.is_valid():
             post = form.save(commit=False)
             post.user = request.user
             post.save()
             return redirect('seeposts')
-    form = PostForm()
-    collection = {
-        'form': form,
-    }
-    return render(request, 'myaande/add_post.html', collection)
+        return render(request, self.template_name, {"form": form})
+
+#    def post_myaande(request):
+#    if request.method == 'POST':
+#        form = PostForm(request.POST)
+#        if form.is_valid():
+#            post = form.save(commit=False)
+#            post.user = request.user
+#            post.save()
+#            return redirect('seeposts')
+#    form = PostForm()
+#    collection = {
+#        'form': form,
+#    }
+#    return render(request, 'myaande/add_post.html', collection)
+
+#class EditAande(View):
 
 def edit_myaande(request, post_id):
     post = get_object_or_404(Post, id=post_id)
