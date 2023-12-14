@@ -2,12 +2,12 @@
 
 {% block content %}
     <h1>Edit my Post</h1>
-    <form method="POST">
+    <form method="post">
         {% csrf_token %}
         {{ form.as_p }}
         <div>
             <p>
-                <button type="submit">Update Post</button>
+                <button type="submit" value="Save">Update Post</button>
             </p>
         </div>
     </form>

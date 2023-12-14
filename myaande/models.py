@@ -1,4 +1,5 @@
 from django.db import models
+from django.urls import reverse
 from django.contrib.auth.models import User
 
 # Create your models here.
@@ -15,6 +16,9 @@ class Post(models.Model):
     
     def number_of_comments(self):
         return self.comments.count()
+    
+    def get_absolute_url(self):
+        return reverse("addpost", kwargs={"pk": self.pk})
 
 class Comment(models.Model):
     commentpost = models.ForeignKey(Post, on_delete=models.CASCADE, related_name="aande_comments", null=True)

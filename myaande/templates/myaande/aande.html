@@ -6,19 +6,19 @@
     </p>
     <table>
         <tr>
-            {% for post in post_list %}
+            {% for post in object_list %}
                 <td>{{ post.title }}</td>
                 <td>{{ post.description }}</td>
                 <td>{{ post.dateposted }}</td>
                 <td>{{ post.user }}</td>
                 {% if user.is_authenticated %}
                     <td>
-                        <a href="/edit/{{ post.id }}">
+                        <a href="{% url 'editpost' %}">
                             <button>Edit</button>
                         </a>
                     </td>
                     <td>
-                        <a href="/delete/{{ post.id }}">
+                        <a href="/delete/{{ pk }}">
                             <button>Delete</button>
                         </a>
                     </td>
@@ -36,11 +36,10 @@
                     {% for comment in comments %}
                     <td>{{ comment.comment }}</td>
                     <td>{{ comment.datecommented }}</td>
-                    
-                
                 {% empty %}
             <tr><td> Be the first to post!</td></tr>
             {% endfor %}
+        </tr>
     </table>
     <body>
 {% endblock %}
