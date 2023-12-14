@@ -1,27 +1,40 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.views.generic.list import ListView
-from django.views.generic.detail import DetailView
-#from django.views.generic.edit import CreateView, UpdateView
+from django.utils.text import slugify
+#from django.views.generic.detail import DetailView
+from django.views.generic.edit import CreateView
+#UpdateView
 from django.views import View
 from .models import Post, Comment
 from .forms import PostForm, CommentForm
-
 
 # Create your views here.
 
 class AandeView(ListView):
     model = Post
     template_name = 'myaande/aande.html'
+    queryset = Post.objects.all()
     
     def get_data(self, **kwargs):
-        posts = super().get_data(**kwargs)
-        posts['post'] = Post.objects.all()
-        return posts
+#        posts = super().get_data(**kwargs)
+#        posts ['post']= Post.objects.all()
+        return queryset
 
+class AandeDetail(View):
+    def get(self, request, slug, *args, **kwargs):
+        queryset = Post.objects.all()
+        post = get_object_or_404(queryset, slug=slug)
 
-class AandeDetail(DetailView):
-    model = Post
-    template_name = 'myaande/post_detail.html'
+        return render(
+            request, 
+            'myaande/post_detail.html',
+            {
+                "post": post,
+            },
+        )
+
+    #template_name = 'myaande/post_detail.html'
+    #context_object_name = "post"
 
 #def get_myaande(request):
 #    posts = Post.objects.all()
@@ -49,15 +62,16 @@ class AandeDetail(DetailView):
 #            return render(request, self.template_name, {"form": form})
 
 
+class PostAande(CreateView):
+    model = Post
+    form_class = PostForm
+    template_name = 'myaande/add_post.html'
+    success_url = "/"
 
-#class PostAande(CreateView):
-#    model = Post
-#    form_class = PostForm
-#    template_name = 'myaande/add_post.html'
-
-#    def form_valid(self, form_class):
-#        form_class.instance.user = self.request.user
-#        return super().form_valid(form_class)
+    def form_valid(self, form_class):
+        form_class.instance.user = self.request.user
+        form_class.instance.slug = slugify(form_class.cleaned_data['title'])
+        return super().form_valid(form_class)
 
 
 #    def post_myaande(request):
@@ -68,7 +82,7 @@ class AandeDetail(DetailView):
 #            post.user = request.user
 #            post.save()
 #            return redirect('seeposts')
-#    form = PostForm()
+#                form = PostForm()
 #    collection = {
 #        'form': form,
 #    }

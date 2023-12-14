@@ -2,34 +2,42 @@
 {% extends "myaande/basehome.html" %}
 
 {% block content %}
-
-<table>
-    <tr>
-        
-            {% if user.is_authenticated %}
-                <td>
-                    <a href="'/edit'">
-                        <button>Edit</button>
-                    </a>
-                </td>
-                <td>
-                    <a href="/delete/">
-                        <button>Delete</button>
-                    </a>
-                </td>
-                <td>
-                    <a href="/comment/{{ comment.id }}">
-                        <button>Comment</button>
-                    </a>
-                </td>
+<div>
+    <div>
+        {{ post.title }}
+        <div>
+            {{ post.description }}
+            {{ post.dateposted }}
+            {{ post.user }}
+        </div>
+        <table>
+            <tr>
+                {% if user.is_authenticated %}
+                    <td>
+                        <a href="'/edit'">
+                            <button>Edit</button>
+                        </a>
+                    </td>
+                    <td>
+                        <a href="/delete/">
+                            <button>Delete</button>
+                        </a>
+                    </td>
+                    <td>
+                        <a href="/comment/{{ comment.id }}">
+                            <button>Comment</button>
+                        </a>
+                    </td>
+                </tr>
+                {% endif %}
+                
+                {% for comment in comments %}
+                        <td>{{ comment.comment }}</td>
+                        <td>{{ comment.datecommented }}</td>
+                    
+                {% endfor %}
             </tr>
-            {% endif %}
-        
-        {% for comment in comments %}
-                <td>{{ comment.comment }}</td>
-                <td>{{ comment.datecommented }}</td>
-            
-        {% endfor %}
-    </tr>
-</table>
+        </table>
+    </div>
+</div>
 {% endblock %}

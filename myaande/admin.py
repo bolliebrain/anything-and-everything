@@ -3,5 +3,8 @@ from .models import *
 
 # Register your models here.
 
-admin.site.register(Post)
+class PostAdmin(admin.ModelAdmin):
+    list_display = ('title', 'slug')
+
+admin.site.register(Post, PostAdmin)
 admin.site.register(Comment)
