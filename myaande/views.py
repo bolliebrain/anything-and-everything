@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect, get_object_or_404
-from django.views.generic import ListView
+from django.views.generic.list import ListView
+from django.views.generic.detail import DetailView
 #from django.views.generic.edit import CreateView, UpdateView
 from django.views import View
 from .models import Post, Comment
@@ -10,8 +11,17 @@ from .forms import PostForm, CommentForm
 
 class AandeView(ListView):
     model = Post
-    queryset = Post.objects.all()
     template_name = 'myaande/aande.html'
+    
+    def get_data(self, **kwargs):
+        posts = super().get_data(**kwargs)
+        posts['post'] = Post.objects.all()
+        return posts
+
+
+class AandeDetail(DetailView):
+    model = Post
+    template_name = 'myaande/post_detail.html'
 
 #def get_myaande(request):
 #    posts = Post.objects.all()
@@ -38,7 +48,7 @@ class AandeView(ListView):
 #                return redirect('seeposts')
 #            return render(request, self.template_name, {"form": form})
 
-#class AandeDetail(View):
+
 
 #class PostAande(CreateView):
 #    model = Post

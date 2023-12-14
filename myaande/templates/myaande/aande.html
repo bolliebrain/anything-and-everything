@@ -7,10 +7,10 @@
             <a href="/addapost">Add a post</a>
         {% endif %}
         {% for post in post_list %}
-        <a href="#">
+        <a href="{% url 'post-detail' post.slug %}">
             <h2>{{ post.title }}</h2>
+            <p>{{ post.description }}</p>
         </a>
-        <p>{{ post.description }}</p>
         <p>{{ post.dateposted }}</p>
         {% if user.is_authenticated %}
         <p>{{ post.user }}</p>
