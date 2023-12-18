@@ -1,7 +1,8 @@
 
-{% extends "myaande/basehome.html" %}
+{% extends "myaande/basehome.html" %}{% block content %}
 
-{% block content %}
+{% load crispy_forms_tags %}
+
 <div>
     <div>
         {{ post.title }}
@@ -14,12 +15,12 @@
             <tr>
                 {% if user.is_authenticated %}
                     <td>
-                        <a href="'/edit'">
+                        <a href="{% url 'edit_post' post.slug %}"> 
                             <button>Edit</button>
                         </a>
                     </td>
                     <td>
-                        <a href="/delete/">
+                        <a href="{% url 'delete_post' post.slug %}">
                             <button>Delete</button>
                         </a>
                     </td>
@@ -31,13 +32,27 @@
                 </tr>
                 {% endif %}
                 
-                {% for comment in comments %}
-                        <td>{{ comment.comment }}</td>
-                        <td>{{ comment.datecommented }}</td>
-                    
-                {% endfor %}
+                <table>
+                    {% for comment in comments %}
+                        <tr>
+                            <td>{{ comment.user }}</td>
+                            <td>{{ comment.comment }}</td>
+                            <td>{{ comment.datecommented }}</td>
+                        </tr>
+                    {% endfor %}
+                </table>
+                {% if user.is_authenticated %}
+                <h1>Leave a Comment</h1>
+                <p> From {{ user.username }}</p>
+                <form method="post">
+                    {{ comment_form | crispy }}
+                    {% csrf_token %}
+                    <button type="submit">Add Comment</button>
+                </form>
+                {% endif %}
             </tr>
         </table>
     </div>
 </div>
-{% endblock %}
+
+{% endblock content%}

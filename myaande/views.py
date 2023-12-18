@@ -1,9 +1,7 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.views.generic.list import ListView
 from django.utils.text import slugify
-#from django.views.generic.detail import DetailView
-from django.views.generic.edit import CreateView
-#UpdateView
+from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.views import View
 from .models import Post, Comment
 from .forms import PostForm, CommentForm
@@ -24,17 +22,48 @@ class AandeDetail(View):
     def get(self, request, slug, *args, **kwargs):
         queryset = Post.objects.all()
         post = get_object_or_404(queryset, slug=slug)
+        comments = Comment.objects.all()
 
         return render(
             request, 
             'myaande/post_detail.html',
             {
                 "post": post,
+                "comment_form": CommentForm(),
+                "comments": comments,
+            },
+        )
+    
+    def post(self, request, slug, *args, **kwargs):
+        model = Comment
+        form_class = CommentForm
+
+        queryset = Post.objects.all()
+        post = get_object_or_404(queryset, slug=slug)
+        comments = Comment.objects.all()
+
+        comment_form = CommentForm(data=request.POST)
+        
+        if comment_form.is_valid():
+            comment = comment_form.save(commit=False)
+            comment.user = self.request.user
+            comment.post = post
+            comment.save()
+
+        else:
+            comment_form = CommentForm()
+
+        return render(
+            request, 'myaande/post_detail.html',
+            {
+                "post": post,
+                "comment_form": CommentForm(),
+                "comments": comments,
             },
         )
 
-    #template_name = 'myaande/post_detail.html'
-    #context_object_name = "post"
+#template_name = 'myaande/post_detail.html'
+#context_object_name = "post"
 
 #def get_myaande(request):
 #    posts = Post.objects.all()
@@ -88,11 +117,16 @@ class PostAande(CreateView):
 #    }
 #    return render(request, 'myaande/add_post.html', collection)
 
-#class EditAande(UpdateView):
-#    model = Post
-#    form_class = PostForm
-#    template_name = "myaande/edit_post.html"
+class EditAande(UpdateView):
+    model = Post
+    form_class = PostForm
+    template_name = "myaande/edit_post.html"
+    success_url = "/"
 
+class DeleteAande(DeleteView):
+    model = Post
+    template_name = "myaande/post_confirm_delete.html"
+    success_url = "/"
 
 
 #    def edit_myaande(request, post_id):
@@ -115,6 +149,7 @@ class PostAande(CreateView):
 #    return redirect('seeposts')
 
 #class CommentView():
+#    model = 
 #    def get(request):
 #        comments = Comment.objects.get()
 #        collection = {

@@ -19,14 +19,5 @@
         {% csrf_token %}
         <button type="submit">Add Comment</button>
     </form>
-    <table>
-    {% for comment in comments %}
-        <tr>
-            <td>{{ comment.user }}</td>
-            <td>{{ comment.comment }}</td>
-            <td>{{ comment.datecommented }}</td>
-        </tr>
-    {% endfor %}
-    </table>
 {% endblock %}
 </html>
