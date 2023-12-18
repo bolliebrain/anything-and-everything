@@ -52,6 +52,8 @@ class AandeDetail(View):
 
         else:
             comment_form = CommentForm()
+        
+#        comments = Comment.commentpost
 
         return render(
             request, 'myaande/post_detail.html',
