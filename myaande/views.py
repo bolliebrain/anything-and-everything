@@ -132,6 +132,19 @@ class DeleteAande(DeleteView):
     template_name = "myaande/post_confirm_delete.html"
     success_url = "/"
 
+class EditComment(UpdateView):
+    model = Comment
+    form_class = CommentForm
+    template_name = "myaande/edit_comment.html"
+    success_url = "/"
+
+class DeleteComment(DeleteView):
+    model = Comment
+    template_name = "myaande/comment_confirm_delete.html"
+    
+    def get (self, request, slug, *args, **kwargs):
+        comment.delete()
+        return redirect('post_detail')
 
 #    def edit_myaande(request, post_id):
 #        post = get_object_or_404(Post, id=post_id)

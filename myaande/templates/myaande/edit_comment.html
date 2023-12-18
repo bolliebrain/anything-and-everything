@@ -1,0 +1,17 @@
+{% extends "myaande/basehome.html" %}
+
+{% block content %}
+
+{% load crispy_forms_tags %}
+    <h1>Edit my Comment</h1>
+    <form method="post">
+        {{ comment_form | crispy }}
+        {% csrf_token %}
+        <div>
+            <p>
+                <button type="submit" value="Save">Update Comment</button>
+            </p>
+        </div>
+    </form>
+{% endblock %}
+</html>
