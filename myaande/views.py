@@ -22,7 +22,8 @@ class AandeDetail(View):
     def get(self, request, slug, *args, **kwargs):
         queryset = Post.objects.all()
         post = get_object_or_404(queryset, slug=slug)
-        comments = Comment.objects.all()
+        comments = Comment.objects.filter(commentpost=post.pk)
+        print(f'comments {comments}')
 
         return render(
             request, 
@@ -40,15 +41,16 @@ class AandeDetail(View):
 
         queryset = Post.objects.all()
         post = get_object_or_404(queryset, slug=slug)
-        comments = Comment.objects.all()
+        comments = Comment.objects.filter(commentpost=post.pk)
 
         comment_form = CommentForm(data=request.POST)
         
         if comment_form.is_valid():
             comment = comment_form.save(commit=False)
             comment.user = self.request.user
-            comment.post = post
+            comment.commentpost = post
             comment.save()
+            print('Comment saved')
 
         else:
             comment_form = CommentForm()

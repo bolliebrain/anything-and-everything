@@ -13,7 +13,7 @@
         </div>
         <table>
             <tr>
-                {% if user.is_authenticated %}
+                {% if user.is_authenticated and post.user == user %}
                     <td>
                         <a href="{% url 'edit_post' post.slug %}"> 
                             <button>Edit</button>
@@ -24,7 +24,6 @@
                             <button>Delete</button>
                         </a>
                     </td>
-                </tr>
                 {% endif %}
                 
                 <table>
@@ -33,6 +32,11 @@
                             <td>{{ comment.user }}</td>
                             <td>{{ comment.comment }}</td>
                             <td>{{ comment.datecommented }}</td>
+                            <td>
+                                {% if user.is_authenticated and comment.user == user %}
+                                    <button>Edit</button> <button>Delete</button>
+                                {% endif %}
+                            <td/>
                         </tr>
                     {% endfor %}
                 </table>
