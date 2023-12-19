@@ -146,6 +146,9 @@ class DeleteComment(DeleteView):
     template_name = "myaande/comment_confirm_delete.html"
     success_url = '/'
 
+    def get_success_url(self):
+        return reverse_lazy('post_detail', kwargs={'slug':self.object.commentpost.slug})
+
 
 #    def edit_myaande(request, post_id):
 #        post = get_object_or_404(Post, id=post_id)
