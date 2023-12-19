@@ -1,4 +1,5 @@
 from django.shortcuts import render, redirect, get_object_or_404
+from django.urls import reverse_lazy
 from django.views.generic.list import ListView
 from django.utils.text import slugify
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
@@ -136,15 +137,15 @@ class EditComment(UpdateView):
     model = Comment
     form_class = CommentForm
     template_name = "myaande/edit_comment.html"
-    success_url = "/"
+
+    def get_success_url(self):
+        return reverse_lazy('post_detail', kwargs={'slug':self.object.commentpost.slug})
 
 class DeleteComment(DeleteView):
     model = Comment
     template_name = "myaande/comment_confirm_delete.html"
-    
-    def get (self, request, slug, *args, **kwargs):
-        comment.delete()
-        return redirect('post_detail')
+    success_url = '/'
+
 
 #    def edit_myaande(request, post_id):
 #        post = get_object_or_404(Post, id=post_id)

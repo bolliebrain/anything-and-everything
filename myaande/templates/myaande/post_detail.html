@@ -34,10 +34,10 @@
                             <td>{{ comment.datecommented }}</td>
                             <td>
                                 {% if user.is_authenticated and comment.user == user %}
-                                    <a href="{% url 'edit_comment' post.slug %}">
+                                    <a href="{% url 'edit_comment' comment.id %}">
                                         <button>Edit Comment</button>
                                     </a>
-                                    <a href="{% url 'delete_comment' post.slug %}">
+                                    <a href="{% url 'delete_comment' comment.id %}">
                                         <button>Delete Comment</button>
                                     </a>
                                 {% endif %}
