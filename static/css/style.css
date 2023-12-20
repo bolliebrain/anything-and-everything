@@ -1,0 +1,13 @@
+
+.navbar-custom {
+    background-color:#00bfff
+}
+
+.navbar-brand {
+    color:#fafbfb
+}
+
+.pilltab .active a,
+.red .active a:hover {
+    border-color: orange;
+}

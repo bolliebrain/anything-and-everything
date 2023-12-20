@@ -1,25 +1,46 @@
+{% load static %}
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <meta name="description" content="Buy, Sell, Services and Browse Anything and Everything."
+    <meta name="keywords" content="buy, sell, browse, services, advertise">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
 </head>
 
 <body>
-    <h1>Welcome to Anything and Everything</h1>
-            <p><a href="{% url 'seeposts' %}">Home</a>
-            </p>
-        {% if user.is_authenticated %}
-            <p><a href="{% url 'account_logout' %}">Logout</a>
-            </p>
-        {% else %}
-            <p><a href="{% url 'account_signup' %}">Sign Up</a>
-            </p>
-            <p><a href="{% url 'account_login' %}">Login</a>
-            </p>
-        {% endif %}
-            
+    <nav class="navbar navbar-expand-lg navbar-custom">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="'col-md-12">
+                    <h3 class="text-left" style="color:rgb(255, 255, 255)">
+                        Anything and Everything
+                    </h3>
+                    <ul class="nav nav-pills pilltab">
+                        <li class="active">
+                            <a class="navbar-brand" href="{% url 'seeposts' %}">Home</a>
+                        </li>
+                        {% if user.is_authenticated %}
+                        <li class="active">
+                            <a class="navbar-brand" href="{% url 'account_logout' %}">Logout</a>
+                        </li>
+                        {% else %}
+                        <li class="active">
+                            <a class="navbar-brand" href="{% url 'account_signup' %}">Sign Up</a>
+                        </li>
+                        <li class="active">
+                            <a class="navbar-brand" href="{% url 'account_login' %}">Login</a>
+                        </li>
+                        {% endif %}
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </nav>       
     {% block content %}
     
     {% endblock %}
