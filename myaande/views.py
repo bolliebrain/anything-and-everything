@@ -13,8 +13,8 @@ class AandeView(ListView):
     model = Post
     template_name = 'myaande/aande.html'
     queryset = Post.objects.all()
-    paginate_by = 4
-    
+    paginate_by = 6
+
     def get_data(self, **kwargs):
 #        posts = super().get_data(**kwargs)
 #        posts ['post']= Post.objects.all()

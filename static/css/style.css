@@ -1,6 +1,6 @@
 
 .navbar-custom {
-    background-color:#00bfff
+    background-color:rgb(0, 191, 255)
 }
 
 .navbar-brand {
@@ -12,6 +12,25 @@
     border-color: orange;
 }
 
-.postbox {
-    border-color:black;
+.intro {
+    height: 20rem;
+    margin: auto;
+}
+
+.advert{
+    text-align:center;
+}
+
+.innerbox {
+    border-radius: 25px;
+    background: rgba(0, 191, 255, 0.4);
+    padding: 20px;
+    width: 17rem;
+    height: 17rem;
+}
+
+.quote {
+    text-align: center;
+    padding: 2rem;
+    background: rgba(195, 201, 203, 0.4);
 }

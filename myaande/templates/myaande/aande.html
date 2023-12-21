@@ -4,8 +4,8 @@
 
 
 <div class="container-fluid">
-    <div class="row">
-        <div class="col-md-4">
+    <div class="row intro">
+        <div class="col-md-4 d-flex justify-content-center quote">
             <blockquote class="blockquote">
                 <p class="mb-0">
                     I found someone local to fix my roof!
@@ -13,25 +13,32 @@
                 <footer class="blockquote-footer">
                     Villagegirl94 <cite>Jan 2023</cite>
                 </footer>
+                <p class="mb-0">
+                    I now have a local Dogwalker
+                </p>
+                <footer class="blockquote-footer">
+                    PetLover <cite>Sussex</cite>
+                </footer>
             </blockquote>
         </div>
-        <div class="col-md-4">
+        <div class="col-md-4 d-flex justify-content-center advert">
             <section class ="callout">
                 <p>Buy, Sell, Provide, Exchange or simply Browse!</p>
                 {% if user.is_authenticated %}
-                <p>Hi {{ user.username }}</p>
+                <p>{{ user.username }}</p>
                 <button type="button" class"btn btn-success btn-lg">
                     <a href="/addapost">
                         <p>Add a Post</p>
                     </a>
                 </button>
+                {% else %}
+                <button type="button" class"btn btn-success btn-lg">
+                    Sign Up!
+                </button>
                 {% endif %}
             </section>
-            <button type="button" class"btn btn-success btn-lg">
-                Sign Up!
-            </button>
         </div>
-        <div class="col-md-4">
+        <div class="col-md-4 d-flex justify-content-center quote">
             <blockquote class="blockquote">
                 <p class="mb-0">
                     I sold my secondhand computer in a week
@@ -39,24 +46,31 @@
                 <footer class="blockquote-footer">
                     Techwhizz <cite>London</cite>
                 </footer>
+                <p class="mb-0">
+                    Secondhand Furniture for my new home
+                </p>
+                <footer class="blockquote-footer">
+                    Student <cite>2023</cite>
+                </footer>
             </blockquote>
         </div>
     </div>
     <div class="row">
         {% for post in post_list %}
-            <div class="col-md-3 postbox">
-                <a href="{% url 'post_detail' post.slug %}"> 
-                <h2>{{ post.title }}</h2>
-                </a>
-                <div class="card-body">
-                    <div class="image-container rounded-circle">
-                        <img alt="Post Image" src="#"/>   
-                    </div>
-                    <div>
-                    <p>{{ post.description }}</p>
-                    <p>{{ post.dateposted }}</p>
-                    {% if user.is_authenticated %}
-                        <p>{{ post.user }}</p>
+            <div class="col-md-2">
+                <div class="innerbox">
+                    <a href="{% url 'post_detail' post.slug %}"> 
+                    <h3>{{ post.title }}</h3>
+                    </a>
+                    <div class="card-body">
+                        <div class="image-container rounded-circle">
+                            <img alt="Post Image" src="#"/>   
+                        </div>
+                        <div>
+                        <p>{{ post.dateposted }}</p>
+                        {% if user.is_authenticated %}
+                            <p>{{ post.user }}</p>
+                        </div>
                     </div>
                 </div>
                 {% endif %}
