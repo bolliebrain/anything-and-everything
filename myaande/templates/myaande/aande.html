@@ -59,10 +59,9 @@
         {% for post in post_list %}
             <div class="col-md-2">
                 <div class="innerbox">
-                    <a href="{% url 'post_detail' post.slug %}"> 
-                    <h3>{{ post.title }}</h3>
-                    </a>
                     <div class="card-body">
+                        <a href="{% url 'post_detail' post.slug %}"> 
+                        <h3>{{ post.title }}</h3></a>
                         <div class="image-container rounded-circle">
                             <img alt="Post Image" src="#"/>   
                         </div>
@@ -74,10 +73,9 @@
                         </div>
                     </div>
                 </div>
-                {% empty %}
-                <p>Be the first to post!</p>   
             </div>
-            
+            {% empty %}
+                <p>Be the first to post!</p>   
         {% endfor %} 
     </div>
     <div class="row">
