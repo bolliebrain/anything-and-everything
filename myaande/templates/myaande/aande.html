@@ -62,8 +62,13 @@
                     <div class="card-body">
                         <a href="{% url 'post_detail' post.slug %}"> 
                         <h3>{{ post.title }}</h3></a>
-                        <div class="image-container rounded-circle">
-                            <img alt="Post Image" src="#"/>   
+                        <div class="image-container">
+                            {% if "placeholder" in post.image.url %}
+                            <img alt="Post Image" 
+                                src="https://res.cloudinary.com/dpludhery/image/upload/v1703183780/idea.webp"/>
+                            {% else %}
+                            <img src="{{ post.image.url }}">
+                            {% endif %}
                         </div>
                         <div>
                             <p>{{ post.dateposted }}</p>
