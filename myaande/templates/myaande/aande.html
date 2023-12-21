@@ -67,16 +67,17 @@
                             <img alt="Post Image" src="#"/>   
                         </div>
                         <div>
-                        <p>{{ post.dateposted }}</p>
-                        {% if user.is_authenticated %}
-                            <p>{{ post.user }}</p>
+                            <p>{{ post.dateposted }}</p>
+                            {% if user.is_authenticated %}
+                                <p>{{ post.user }}</p>
+                            {% endif %}
                         </div>
                     </div>
                 </div>
-                {% endif %}
+                {% empty %}
+                <p>Be the first to post!</p>   
             </div>
-            {% empty %}
-            <p>Be the first to post!</p>
+            
         {% endfor %} 
     </div>
     <div class="row">
