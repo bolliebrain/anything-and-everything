@@ -105,6 +105,7 @@ class PostAande(CreateView):
 
     def form_valid(self, form_class):
         form_class.instance.user = self.request.user
+        form_class.instance.image = self.request.image
         form_class.instance.slug = slugify(form_class.cleaned_data['title'])
         return super().form_valid(form_class)
 

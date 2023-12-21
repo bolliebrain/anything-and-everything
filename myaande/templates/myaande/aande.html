@@ -64,8 +64,7 @@
                         <h3>{{ post.title }}</h3></a>
                         <div class="image-container">
                             {% if "placeholder" in post.image.url %}
-                            <img alt="Post Image" 
-                                src="https://res.cloudinary.com/dpludhery/image/upload/v1703184930/u8zgiso62ww2jbpvklim.webp"/>
+                            <img src="https://res.cloudinary.com/dpludhery/image/upload/v1703184930/u8zgiso62ww2jbpvklim.webp"/>
                             {% else %}
                             <img src="{{ post.image.url }}">
                             {% endif %}
