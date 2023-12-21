@@ -1,10 +1,12 @@
 {% extends "myaande/basehome.html" %}
 
 {% block content %}
+{% load crispy_forms_tags %}
     <h1>Add a post!</h1>
+    {% load cloudinary %}
     <form method="POST" action="addapost">
+        {{ form | crispy }}
         {% csrf_token %}
-        {{ form.as_p }}
         <div>
             <p>
                 <button type="submit">Add Post</button>
