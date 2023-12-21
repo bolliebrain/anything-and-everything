@@ -43,8 +43,8 @@
         </div>
     </div>
     <div class="row">
-        <div class="col-md-3 postbox">
-            {% for post in post_list %}
+        {% for post in post_list %}
+            <div class="col-md-3 postbox">
                 <a href="{% url 'post_detail' post.slug %}"> 
                 <h2>{{ post.title }}</h2>
                 </a>
@@ -52,16 +52,18 @@
                     <div class="image-container rounded-circle">
                         <img alt="Post Image" src="#"/>   
                     </div>
+                    <div>
+                    <p>{{ post.description }}</p>
+                    <p>{{ post.dateposted }}</p>
+                    {% if user.is_authenticated %}
+                        <p>{{ post.user }}</p>
+                    </div>
                 </div>
-                <p>{{ post.description }}</p>
-                <p>{{ post.dateposted }}</p>
-                {% if user.is_authenticated %}
-                    <p>{{ post.user }}</p>
                 {% endif %}
-                {% empty %}
-                <p>Be the first to post!</p>
-            {% endfor %} 
-        </div>
+            </div>
+            {% empty %}
+            <p>Be the first to post!</p>
+        {% endfor %} 
     </div>
     <div class="row">
         <div class="col-md-12">
