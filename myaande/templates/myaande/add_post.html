@@ -7,7 +7,7 @@
     <div>
         {% load cloudinary %}
         <div>
-            <form method="POST" action="addapost">
+            <form method="POST" action="addapost" enctype="multipart/form-data">
                 {{ form | crispy }}
                 {% csrf_token %}
                     <button type="submit">Add Post</button>
