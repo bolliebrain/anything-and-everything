@@ -29,6 +29,9 @@
                         <li class="active">
                             <a class="navbar-brand" href="{% url 'account_logout' %}">Logout</a>
                         </li>
+                        <li class="active">
+                            <a class="navbar-brand" href="{% url 'allmyposts' request.user.username %}">{{ user.username }}</a>
+                        </li>
                         {% else %}
                         <li class="active">
                             <a class="navbar-brand" href="{% url 'account_signup' %}">Sign Up</a>

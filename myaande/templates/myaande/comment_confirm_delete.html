@@ -1,12 +1,14 @@
 {% extends "myaande/basehome.html" %}
 
 {% block content %}
-<div>
+
+{% load crispy_forms_tags %}
+
+<div class="container add">
     <form method="post">
+        {{ form | crispy }}
         {% csrf_token %}
-
-        <p>Are you sure you want to delete "{{ comment.title }}"?</p>
-
+        <p>Are you sure you want to delete "{{ comment.comment }}"?</p>
         <input type="submit" value="Confirm">
     </form>
 </div>

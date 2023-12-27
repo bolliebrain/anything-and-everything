@@ -3,6 +3,8 @@
 {% block content %}
 
 {% load crispy_forms_tags %}
+
+<div class="container add">
     <h1>Edit my Comment</h1>
     <form method="post">
         {{ form | crispy }}
@@ -13,5 +15,6 @@
             </p>
         </div>
     </form>
+</div>
 {% endblock %}
 </html>

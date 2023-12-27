@@ -1,6 +1,8 @@
 {% extends "myaande/basehome.html" %}
 
 {% block content %}
+
+<div class="container add">
     <h1>Edit my Post</h1>
     <form method="post" enctype="multipart/form-data">
         {% csrf_token %}
@@ -11,5 +13,6 @@
             </p>
         </div>
     </form>
+</div>
 {% endblock %}
 </html>

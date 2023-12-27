@@ -16,8 +16,6 @@ class AandeView(ListView):
     paginate_by = 6
 
     def get_data(self, **kwargs):
-#        posts = super().get_data(**kwargs)
-#        posts ['post']= Post.objects.all()
         return queryset
 
 class AandeDetail(View):
@@ -56,8 +54,6 @@ class AandeDetail(View):
 
         else:
             comment_form = CommentForm()
-        
-#        comments = Comment.commentpost
 
         return render(
             request, 'myaande/post_detail.html',
@@ -67,35 +63,6 @@ class AandeDetail(View):
                 "comments": comments,
             },
         )
-
-#template_name = 'myaande/post_detail.html'
-#context_object_name = "post"
-
-#def get_myaande(request):
-#    posts = Post.objects.all()
-#    collection = {
-#        'posts': posts,
-#    }
-#    return render(request, 'myaande/aande.html', collection)
-
-#    class PostAande(View):
-#        form_class = PostForm
-#        initial = {"key": "value"}
-#        template_name = "myaande/add_post.html"
-
-#        def get(self, request, *args, **kwargs):
-#            form = self.form_class(initial=self.initial)
-#            return render(request, self.template_name, {"form": form})
-        
-#        def post(self, request, *args, **kwargs):
-#            form = self.form_class(request.POST)
-#            if form.is_valid():
-#                post = form.save(commit=False)
-#                post.user = request.user
-#                post.save()
-#                return redirect('seeposts')
-#            return render(request, self.template_name, {"form": form})
-
 
 class PostAande(CreateView):
     model = Post
@@ -107,32 +74,25 @@ class PostAande(CreateView):
         form_class.instance.user = self.request.user
         form_class.instance.slug = slugify(form_class.cleaned_data['title'])
         return super().form_valid(form_class)
-
-
-#    def post_myaande(request):
-#    if request.method == 'POST':
-#        form = PostForm(request.POST)
-#        if form.is_valid():
-#            post = form.save(commit=False)
-#            post.user = request.user
-#            post.save()
-#            return redirect('seeposts')
-#                form = PostForm()
-#    collection = {
-#        'form': form,
-#    }
-#    return render(request, 'myaande/add_post.html', collection)
+    
+    def get_success_url(self):
+        return reverse_lazy('post_detail', kwargs={'slug':self.object.slug})
 
 class EditAande(UpdateView):
     model = Post
     form_class = PostForm
     template_name = "myaande/edit_post.html"
-    success_url = "/"
+    
+    def get_success_url(self):
+        return reverse_lazy('post_detail', kwargs={'slug':self.object.slug})
 
 class DeleteAande(DeleteView):
     model = Post
     template_name = "myaande/post_confirm_delete.html"
     success_url = "/"
+
+    def get_success_url(self):
+        return reverse_lazy('allmyposts', kwargs={'slug':self.object.slug})
 
 class EditComment(UpdateView):
     model = Comment
@@ -150,54 +110,17 @@ class DeleteComment(DeleteView):
     def get_success_url(self):
         return reverse_lazy('post_detail', kwargs={'slug':self.object.commentpost.slug})
 
+class AllMyPosts(View):
+    model = Post
+    template_name = "myaande/allmyposts.html"
 
-#    def edit_myaande(request, post_id):
-#        post = get_object_or_404(Post, id=post_id)
-#        if request.method == 'POST':
-#            form = PostForm(request.POST, instance=post)
-#            if form.is_valid():
-#                form.instance.name = request.user
-#                form.save()
-#                return redirect('seeposts')
-#        form = PostForm(instance=post)
-#        collection = {
-#            'form' : form
-#        }
-#        return render(request, 'myaande/edit_post.html', collection)
+    def get(self, request, slug, *args, **kwargs):
+        queryset = Post.objects.filter(user=request.user)
 
-#def delete_myaande(request, post_id):
-#    post = get_object_or_404(Post, id=post_id)
-#    post.delete()
-#    return redirect('seeposts')
-
-#class CommentView():
-#    model = 
-#    def get(request):
-#        comments = Comment.objects.get()
-#        collection = {
-#                "post": post,
-#                "comments": comments,
-#                "comment_form": CommentForm,
-#        return render(
-#                }
-#            request, 'myaande/comment_post.html', collection)
-        
-#    def post(request):
-#        if request.method == 'POST':
-#            comment_form = CommentForm(request.POST)
-#            if comment_form.is_valid():
-#                comment = comment_form.save(commit=False)
-#                comment.user = request.user
-#                comment.save()
-#                return redirect ('comment')
-#                comment_form = CommentForm()
-#        else:
-#            comment_form = CommentForm()
-
-#        comments = Comment.objects.all()
-#        collection = {
-#            "post": post,
-#            'comment_form': CommentForm,
-#            'comments': comments
-#        }
-#        return render(request, 'myaande/comment_post.html', collection)
+        return render(
+            request, 
+            'myaande/allmyposts.html',
+            {
+                 "posts": queryset,
+            },
+        )
