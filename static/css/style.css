@@ -1,3 +1,8 @@
+body {
+    background-image: url("/static/images/background.webp");
+    background-repeat: repeat;
+}
+
 .navbar-custom {
     background-color:rgb(0, 191, 255)
 }
@@ -55,5 +60,13 @@
 
 .contact {
     text-align: center;
-    background-color:rgba(195, 201, 203, 0.4)
+    background-color:rgba(195, 201, 203, 0.4);
+    margin-top: 3rem;
+}
+
+.add {
+    text-align: center;
+    background-color:rgba(195, 201, 203, 0.4);
+    width: 25rem;
+    height: 30rem;
 }
