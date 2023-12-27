@@ -71,7 +71,16 @@ body {
     height: 30rem;
 }
 
+.detailinnerbox {
+    background: rgba(0, 191, 255, 0.4);
+    padding: 20px;
+    width: 25rem;
+    height: 30rem;
+    position: relative;
+}
+
 .scroll {
     height: 30rem;
     overflow-y: auto;
 }
+
