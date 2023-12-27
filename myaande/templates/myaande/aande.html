@@ -59,22 +59,18 @@
         {% for post in post_list %}
             <div class="col-md-2">
                 <div class="innerbox">
-                    <div class="card-body">
+                    <div class="image-container">
                         <a href="{% url 'post_detail' post.slug %}"> 
                         <h3>{{ post.title }}</h3></a>
-                        <div class="image-container">
-                            {% if "placeholder" in post.image.url %}
-                            <img src="https://res.cloudinary.com/dpludhery/image/upload/v1703184930/u8zgiso62ww2jbpvklim.webp"/>
-                            {% else %}
-                            <img src="{{ post.image.url }}">
-                            {% endif %}
-                        </div>
-                        <div>
-                            <p>{{ post.dateposted }}</p>
-                            {% if user.is_authenticated %}
-                                <p>{{ post.user }}</p>
-                            {% endif %}
-                        </div>
+                        {% if "placeholder" in post.image.url %}
+                        <img src="https://res.cloudinary.com/dpludhery/image/upload/v1703184930/u8zgiso62ww2jbpvklim.webp"/>
+                        {% else %}
+                        <img src="{{ post.image.url }}">
+                        {% endif %}
+                        <p>{{ post.dateposted }}</p>
+                        {% if user.is_authenticated %}
+                            <p>{{ post.user }}</p>
+                        {% endif %}
                     </div>
                 </div>
             </div>
@@ -85,7 +81,7 @@
     <div class="row">
         <div class="col-md-12">
             {% if is_paginated %}
-            <nav aria-label="Page navigation justify-content-center">
+            <nav aria-label="Page navigation">
                 <ul class="pagination">
                     {% if page_obj.has_previous %}
                     <li><a href="?page={{ page_obj.previous_page_number }}" class="page-link">&laquo; PREV </a></li>

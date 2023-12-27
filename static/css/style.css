@@ -1,10 +1,9 @@
-
 .navbar-custom {
     background-color:rgb(0, 191, 255)
 }
 
 .navbar-brand {
-    color:#fafbfb
+    color:#fafbfb;
 }
 
 .pilltab .active a,
@@ -13,11 +12,12 @@
 }
 
 .intro {
-    height: 20rem;
     margin: auto;
+    margin-top: 5rem;
+    margin-bottom: 3rem;
 }
 
-.advert{
+.advert {
     text-align:center;
 }
 
@@ -27,10 +27,33 @@
     padding: 20px;
     width: 17rem;
     height: 17rem;
+    position: relative;
+}
+
+.pagination {
+    justify-content: center;
+    margin: 2rem;
+}
+
+.image-container {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
 }
 
 .quote {
     text-align: center;
-    padding: 2rem;
+    padding: 1rem;
+    height: 15rem;
+}
+
+.blockquote {
     background: rgba(195, 201, 203, 0.4);
+    margin: auto;
+    padding: 2rem;
+}
+
+.contact {
+    text-align: center;
+    background-color:rgba(195, 201, 203, 0.4)
 }
