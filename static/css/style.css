@@ -70,3 +70,8 @@ body {
     width: 25rem;
     height: 30rem;
 }
+
+.scroll {
+    height: 30rem;
+    overflow-y: auto;
+}

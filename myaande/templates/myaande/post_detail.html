@@ -37,29 +37,27 @@
             </tr>
         </div>
         <div class="col-md-4">
-            <table>
-                <tr>
-                    <table>
-                        {% for comment in comments %}
-                            <tr>
-                                <td>{{ comment.user }}</td>
-                                <td>{{ comment.comment }}</td>
-                                <td>{{ comment.datecommented }}</td>
-                                <td>
-                                    {% if user.is_authenticated and comment.user == user %}
-                                        <a href="{% url 'edit_comment' comment.id %}">
-                                            <button>Edit Comment</button>
-                                        </a>
-                                        <a href="{% url 'delete_comment' comment.id %}">
-                                            <button>Delete Comment</button>
-                                        </a>
-                                    {% endif %}
-                                <td/>
-                            </tr>
-                        {% endfor %}
-                    </table>
-                </tr>
-            </table>
+            <div class="scroll">
+                <table>
+                    {% for comment in comments %}
+                        <tr>
+                            <td>{{ comment.user }}</td>
+                            <td>{{ comment.comment }}</td>
+                            <td>{{ comment.datecommented }}</td>
+                            <td>
+                                {% if user.is_authenticated and comment.user == user %}
+                                    <a href="{% url 'edit_comment' comment.id %}">
+                                        <button>Edit Comment</button>
+                                    </a>
+                                    <a href="{% url 'delete_comment' comment.id %}">
+                                        <button>Delete Comment</button>
+                                    </a>
+                                {% endif %}
+                            <td/>
+                        </tr>
+                    {% endfor %}
+                </table>
+            </div>
         </div>
         <div class="col-md-4">
             <div class="add">
