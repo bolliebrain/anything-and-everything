@@ -26,13 +26,13 @@
                 <p>Buy, Sell, Provide, Exchange or simply Browse!</p>
                 {% if user.is_authenticated %}
                 <p>{{ user.username }}</p>
-                <button type="button" class"btn btn-success btn-lg">
+                <button type="button" class="btn btn-lg">
                     <a href="/addapost">
-                        <p>Add a Post</p>
+                        Add a Post
                     </a>
                 </button>
                 {% else %}
-                <button type="button" class"btn btn-success btn-lg">
+                <button type="button" class="btn btn-lg">
                     <a class="navbar-brand" href="{% url 'account_signup' %}">Sign Up</a>
                 </button>
                 {% endif %}
@@ -53,6 +53,22 @@
                     Student <cite>2023</cite>
                 </footer>
             </blockquote>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            {% if is_paginated %}
+            <nav aria-label="Page navigation">
+                <ul class="pagination">
+                    {% if page_obj.has_previous %}
+                    <li><a href="?page={{ page_obj.previous_page_number }}" class="page-link btn">&laquo; PREV </a></li>
+                    {% endif %}
+                    {% if page_obj.has_next %}
+                    <li><a href="?page={{ page_obj.next_page_number }}" class="page-link btn"> NEXT &raquo;</a></li>
+                    {% endif %}
+                </ul>
+            </nav>
+            {% endif %}
         </div>
     </div>
     <div class="row">
@@ -77,22 +93,6 @@
             {% empty %}
                 <p>Be the first to post!</p>   
         {% endfor %} 
-    </div>
-    <div class="row">
-        <div class="col-md-12">
-            {% if is_paginated %}
-            <nav aria-label="Page navigation">
-                <ul class="pagination">
-                    {% if page_obj.has_previous %}
-                    <li><a href="?page={{ page_obj.previous_page_number }}" class="page-link">&laquo; PREV </a></li>
-                    {% endif %}
-                    {% if page_obj.has_next %}
-                    <li><a href="?page={{ page_obj.next_page_number }}" class="page-link"> NEXT &raquo;</a></li>
-                    {% endif %}
-                </ul>
-            </nav>
-            {% endif %}
-        </div>
     </div>
 </div>
 {% endblock %}

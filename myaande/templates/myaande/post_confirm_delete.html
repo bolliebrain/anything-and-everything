@@ -4,9 +4,8 @@
 <div class="container add">
     <form method="post">
         {% csrf_token %}
-
+        <h3>Delete Post</h3>
         <p>Are you sure you want to delete "{{ post.title }}"?</p>
-
         <input type="submit" value="Confirm">
     </form>
 </div>

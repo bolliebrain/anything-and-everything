@@ -26,6 +26,10 @@ body {
     text-align:center;
 }
 
+.btn {
+    background-color: rgba(195, 201, 203, 0.4);
+}
+
 .innerbox {
     border-radius: 25px;
     background: rgba(0, 191, 255, 0.4);
@@ -37,7 +41,6 @@ body {
 
 .pagination {
     justify-content: center;
-    margin: 2rem;
 }
 
 .image-container {
@@ -58,10 +61,23 @@ body {
     padding: 2rem;
 }
 
+.contactfoot {
+    margin-top: 2rem;
+}
+
 .contact {
     text-align: center;
     background-color:rgba(195, 201, 203, 0.4);
-    margin-top: 3rem;
+    height: 5rem;
+    padding: 0.5rem;
+}
+
+i {
+    margin: 1rem;
+}
+
+p {
+    text-align: center;
 }
 
 .add {
@@ -69,6 +85,8 @@ body {
     background-color:rgba(195, 201, 203, 0.4);
     width: 25rem;
     height: 30rem;
+    margin-top: 2rem;
+    margin-bottom: 6rem;
 }
 
 .detailinnerbox {
@@ -77,6 +95,7 @@ body {
     width: 25rem;
     height: 30rem;
     position: relative;
+    margin-top: 2rem;
 }
 
 .detailimage-container {
@@ -88,5 +107,15 @@ body {
 .scroll {
     height: 30rem;
     overflow-y: auto;
+    overflow-x: hidden;
+    margin-top: 2rem;
+    text-align: center;
+    margin-bottom: 6rem;
+}
+
+.respond {
+    max-width: 25rem;
+    font-size: medium;
+    background-color: #fafbfb;
 }
 

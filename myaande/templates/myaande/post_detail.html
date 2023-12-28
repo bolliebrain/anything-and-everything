@@ -13,12 +13,12 @@
                 {% if user.is_authenticated and post.user == user %}
                     <td>
                         <a href="{% url 'edit_post' post.slug %}"> 
-                            <button>Edit</button>
+                            <button type="button" class="btn">Edit Post</button>
                         </a>
                     </td>
                     <td>
                         <a href="{% url 'delete_post' post.slug %}">
-                            <button>Delete</button>
+                            <button type="button" class="btn">Delete Post</button>
                         </a>
                     </td>
                 {% endif %}
@@ -36,9 +36,9 @@
                     {% endif %}
                 </div>
                 <div>
+                    <p>{{ post.user }}</p>
                     <p>{{ post.description }}</p>
                     <p>{{ post.dateposted }}</p>
-                    <p>{{ post.user }}</p>
                 </div>
             </div>
         </div>
@@ -46,20 +46,22 @@
             <div class="scroll">
                 <table>
                     {% for comment in comments %}
-                        <tr>
+                        <tr class="respond">
                             <td>{{ comment.user }}</td>
-                            <td>{{ comment.comment }}</td>
                             <td>{{ comment.datecommented }}</td>
+                            <td>{{ comment.comment }}</td>
                             <td>
                                 {% if user.is_authenticated and comment.user == user %}
                                     <a href="{% url 'edit_comment' comment.id %}">
-                                        <button>Edit Comment</button>
+                                        <button type="button" class="btn">Edit</button>
                                     </a>
                                     <a href="{% url 'delete_comment' comment.id %}">
-                                        <button>Delete Comment</button>
+                                        <button type="button" class="btn">Delete</button>
                                     </a>
                                 {% endif %}
                             <td/>
+                            {% empty %}
+                            <p>Be the first to comment!</p>   
                         </tr>
                     {% endfor %}
                 </table>
@@ -73,7 +75,7 @@
                 <form method="post">
                     {{ comment_form | crispy }}
                     {% csrf_token %}
-                    <button type="submit">Add Comment</button>
+                    <button type="submit" class="btn">Add Comment</button>
                 </form>
                 {% endif %}
             </div>

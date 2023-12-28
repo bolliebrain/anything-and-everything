@@ -4,6 +4,7 @@ from django.views.generic.list import ListView
 from django.utils.text import slugify
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.views import View
+from django.contrib import messages
 from .models import Post, Comment
 from .forms import PostForm, CommentForm
 
@@ -50,7 +51,7 @@ class AandeDetail(View):
             comment.user = self.request.user
             comment.commentpost = post
             comment.save()
-            print('Comment saved')
+            messages.success(request, "Commented Successfully" )
 
         else:
             comment_form = CommentForm()
@@ -76,6 +77,7 @@ class PostAande(CreateView):
         return super().form_valid(form_class)
     
     def get_success_url(self):
+        messages.success(self.request, "Posted Successfully" )
         return reverse_lazy('post_detail', kwargs={'slug':self.object.slug})
 
 class EditAande(UpdateView):
@@ -84,6 +86,7 @@ class EditAande(UpdateView):
     template_name = "myaande/edit_post.html"
     
     def get_success_url(self):
+        messages.success(self.request, "Posted Successfully" )
         return reverse_lazy('post_detail', kwargs={'slug':self.object.slug})
 
 class DeleteAande(DeleteView):
@@ -100,6 +103,7 @@ class EditComment(UpdateView):
     template_name = "myaande/edit_comment.html"
 
     def get_success_url(self):
+        messages.success(self.request, 'Commented Successfully' )
         return reverse_lazy('post_detail', kwargs={'slug':self.object.commentpost.slug})
 
 class DeleteComment(DeleteView):
