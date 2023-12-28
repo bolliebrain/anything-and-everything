@@ -51,7 +51,7 @@ class AandeDetail(View):
             comment.user = self.request.user
             comment.commentpost = post
             comment.save()
-            messages.success(request, "Commented Successfully" )
+            messages.success(self.request, 'Commented Successfully' )
 
         else:
             comment_form = CommentForm()
@@ -70,6 +70,7 @@ class PostAande(CreateView):
     form_class = PostForm
     template_name = 'myaande/add_post.html'
     success_url = "/"
+#    success_message = "Posted Successfully"
 
     def form_valid(self, form_class):
         form_class.instance.user = self.request.user
@@ -77,16 +78,17 @@ class PostAande(CreateView):
         return super().form_valid(form_class)
     
     def get_success_url(self):
-        messages.success(self.request, "Posted Successfully" )
+        messages.success(self.request, 'Posted Successfully' )
         return reverse_lazy('post_detail', kwargs={'slug':self.object.slug})
 
 class EditAande(UpdateView):
     model = Post
     form_class = PostForm
     template_name = "myaande/edit_post.html"
+#   success_message = "Post Updated Successfully"
     
     def get_success_url(self):
-        messages.success(self.request, "Posted Successfully" )
+        messages.success(self.request, 'Post Updated Successfully' )
         return reverse_lazy('post_detail', kwargs={'slug':self.object.slug})
 
 class DeleteAande(DeleteView):
@@ -101,9 +103,10 @@ class EditComment(UpdateView):
     model = Comment
     form_class = CommentForm
     template_name = "myaande/edit_comment.html"
+#    success_message = "Updated Comment Successfully"
 
     def get_success_url(self):
-        messages.success(self.request, 'Commented Successfully' )
+        messages.success(self.request, 'Updated Comment Successfully' )
         return reverse_lazy('post_detail', kwargs={'slug':self.object.commentpost.slug})
 
 class DeleteComment(DeleteView):
