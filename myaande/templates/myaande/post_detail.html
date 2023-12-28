@@ -9,35 +9,37 @@
             <h3>
                 {{ post.title }}
             </h3>
-        <div>
+            <tr>
+                {% if user.is_authenticated and post.user == user %}
+                    <td>
+                        <a href="{% url 'edit_post' post.slug %}"> 
+                            <button>Edit</button>
+                        </a>
+                    </td>
+                    <td>
+                        <a href="{% url 'delete_post' post.slug %}">
+                            <button>Delete</button>
+                        </a>
+                    </td>
+                {% endif %}
+            </tr>
+        </div>
     </div>
     <div class="row">
         <div class="col-md-4">
             <div class="detailinnerbox">
-                <div class="image-container">
+                <div class="detailimage-container">
                     {% if "placeholder" in post.image.url %}
                         <img src="https://res.cloudinary.com/dpludhery/image/upload/v1703184930/u8zgiso62ww2jbpvklim.webp"/>
                         {% else %}
                         <img src="{{ post.image.url }}">
                     {% endif %}
                 </div>
-                <p>{{ post.description }}</p>
-                <p>{{ post.dateposted }}</p>
-                <p>{{ post.user }}</p>
-                <tr>
-                    {% if user.is_authenticated and post.user == user %}
-                        <td>
-                            <a href="{% url 'edit_post' post.slug %}"> 
-                                <button>Edit</button>
-                            </a>
-                        </td>
-                        <td>
-                            <a href="{% url 'delete_post' post.slug %}">
-                                <button>Delete</button>
-                            </a>
-                        </td>
-                    {% endif %}
-                </tr>
+                <div>
+                    <p>{{ post.description }}</p>
+                    <p>{{ post.dateposted }}</p>
+                    <p>{{ post.user }}</p>
+                </div>
             </div>
         </div>
         <div class="col-md-4">

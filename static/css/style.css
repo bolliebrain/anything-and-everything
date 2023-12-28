@@ -79,6 +79,12 @@ body {
     position: relative;
 }
 
+.detailimage-container {
+    height: 20rem;
+    overflow: hidden;
+    text-align: center;
+}
+
 .scroll {
     height: 30rem;
     overflow-y: auto;

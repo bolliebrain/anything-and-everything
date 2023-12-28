@@ -2,27 +2,27 @@
 
 {% block content %}
 <div class="row">
-        {% for post in posts %}
-            <div class="col-md-2">
-                <div class="innerbox">
-                    <div class="image-container">
-                        <a href="{% url 'post_detail' post.slug %}"> 
-                        <h3>{{ post.title }}</h3></a>
-                        {% if "placeholder" in post.image.url %}
-                        <img src="https://res.cloudinary.com/dpludhery/image/upload/v1703184930/u8zgiso62ww2jbpvklim.webp"/>
-                        {% else %}
-                        <img src="{{ post.image.url }}">
-                        {% endif %}
-                        <p>{{ post.dateposted }}</p>
-                        {% if user.is_authenticated %}
-                            <p>{{ post.user }}</p>
-                        {% endif %}
-                    </div>
+    {% for post in posts %}
+        <div class="col-md-2">
+            <div class="innerbox">
+                <div class="image-container">
+                    <a href="{% url 'post_detail' post.slug %}"> 
+                    <h3>{{ post.title }}</h3></a>
+                    {% if "placeholder" in post.image.url %}
+                    <img src="https://res.cloudinary.com/dpludhery/image/upload/v1703184930/u8zgiso62ww2jbpvklim.webp"/>
+                    {% else %}
+                    <img src="{{ post.image.url }}">
+                    {% endif %}
+                    <p>{{ post.dateposted }}</p>
+                    {% if user.is_authenticated %}
+                        <p>{{ post.user }}</p>
+                    {% endif %}
                 </div>
             </div>
-            {% empty %}
-                <p>Be the first to post!</p>   
-        {% endfor %}
+        </div>
+        {% empty %}
+            <p>Be the first to post!</p>   
+    {% endfor %}
 </div>
 
 

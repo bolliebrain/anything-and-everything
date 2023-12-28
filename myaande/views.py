@@ -116,7 +116,8 @@ class AllMyPosts(View):
 
     def get(self, request, slug, *args, **kwargs):
         queryset = Post.objects.filter(user=request.user)
-
+        print(queryset)
+        
         return render(
             request, 
             'myaande/allmyposts.html',
