@@ -1,39 +1,50 @@
-![CI logo](https://codeinstitute.s3.amazonaws.com/fullstack/ci_logo_small.png)
+# Anything and Everything
 
-Welcome,
+Anything and Everything is a advertising app for users who wish to post about items they are selling, wish to buy, need help or guidance with or simply to reach out to the community.
 
-This is the Code Institute student template for Codeanywhere. If you are using Gitpod then you need [this template](https://github.com/Code-Institute-Org/gitpod-full-template) instead.  We have preinstalled all of the tools you need to get started. It's perfectly ok to use this template as the basis for your project submissions.
+The site acts as a area where users can communicate with other users.
 
-You can safely delete this README.md file, or change it for your own project. Please do read it at least once, though! It contains some important information about Codeanywhere and the extensions we use. Some of this information has been updated since the video content was created. The last update to this file was: **August 30th, 2023**
+The live link can be found here - [Anything and Everything](https://anything-and-everything-be0c15127928.herokuapp.com/)
 
-## Codeanywhere Reminders
+![Colour Palette] ()insert colour Palette here
 
-To run a frontend (HTML, CSS, Javascript only) application in Codeanywhere, in the terminal, type:
+## Table of Contents
 
-`python3 -m http.server`
+-Anything and Everything
+    *[User Experience (UX)]
+    - [User Stories]
+    - [Design]
+        -[Colour Scheme]
+        -[Imagery]
+        -[Fonts]
+        -[Wireframes]
+    *[Agile Methodology]
+    *[Data Model]
+    *[Testing]
+    *[Security Features and Defensive Design]
+        -[User Authentication]
+        -[Form Validation]
+        -[Database Security]
+        -[Custom Error Pages]
+    *[Features]
+        - Header
+        - Footer
+        - Home Page
+        - User Account Pages
+        - Post Detail Page
+        - Add Post Form
+        - Add Comment Form
+        - Update Post Form
+        - Update Comment Form
+        - Delete Post
+        - Delete Comment
+        - Future Features
+    *[Deployment]
+    *[Forking this repository]
+    *[Cloning this repository]
+    *[Languages]
+    *[Frameworks - Libraries - Programes Used]
+    *[Credits]
+    *[Acknowledgements]
 
-A button should appear to click: _Open Preview_ or _Open Browser_.
-
-To run a frontend (HTML, CSS, Javascript only) application in Codeanywhere with no-cache, you can use this alias for `python3 -m http.server`.
-
-`http_server`
-
-To run a backend Python file, type `python3 app.py`, if your Python file is named `app.py` of course.
-
-A button should appear to click: _Open Preview_ or _Open Browser_.
-
-In Codeanywhere you have superuser security privileges by default. Therefore you do not need to use the `sudo` (superuser do) command in the bash terminal in any of the lessons.
-
-To log into the Heroku toolbelt CLI:
-
-1. Log in to your Heroku account and go to _Account Settings_ in the menu under your avatar.
-2. Scroll down to the _API Key_ and click _Reveal_
-3. Copy the key
-4. In Codeanywhere, from the terminal, run `heroku_config`
-5. Paste in your API key when asked
-
-You can now use the `heroku` CLI program - try running `heroku apps` to confirm it works. This API key is unique and private to you so do not share it. If you accidentally make it public then you can create a new one with _Regenerate API Key_.
-
----
-
-Happy coding!
+    
