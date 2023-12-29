@@ -43,9 +43,9 @@
                     {% endif %}
                 </div>
                 <div>
-                    <p>{{ post.user }}</p>
-                    <p>{{ post.description }}</p>
-                    <p>{{ post.dateposted }}</p>
+                    <p><b>By: {{ post.user }}</b></p>
+                    <p>Description: {{ post.description }}</p>
+                    <p><i>{{ post.dateposted }}</i></p>
                 </div>
             </div>
         </div>
@@ -54,7 +54,7 @@
                 <table>
                     {% for comment in comments %}
                         <tr class="respond">
-                            <p><b>{{ comment.user }}</b><p>
+                            <p><b>By: {{ comment.user }}</b><p>
                             <p>{{ comment.comment }}</p>
                             <p><i>{{ comment.datecommented }}</i></p>
                         </tr>
