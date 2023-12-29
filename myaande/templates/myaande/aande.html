@@ -17,19 +17,19 @@
         </div>
         <div class="col-md-4 col-lg-4 justify-content-center advert">
             <section class ="callout">
-                <p style="color:white">Buy, Sell, Provide, Exchange or simply Browse!</p>
+                <p style="color:rgb(255, 255, 255)">Buy, Sell, Provide, Exchange or simply Browse!</p>
                 {% if user.is_authenticated %}
                 <button type="button" class="btn btn-lg">
-                    <a href="/addapost" style="color:black">
+                    <a href="/addapost" style="color:rgb(0, 0, 0)">
                         Add a Post
                     </a>
                 </button>
                 {% else %}
                 <button type="button" class="btn btn-lg">
-                    <a href="{% url 'account_signup' %}" style="color:black">Sign-up</a>
+                    <a href="{% url 'account_signup' %}" style="color:rgb(0, 0, 0)">Sign-up</a>
                 </button>
                 {% endif %}
-                <p style="color:white"> Or view the posts below</p>
+                <p style="color:rgb(255, 255, 255)"> Or view the posts below</p>
             </section>
         </div>
         <div class="col-md-4 col-lg-4 justify-content-center quote">
@@ -76,7 +76,7 @@
             <div class="col-md-2">
                 <div class="innerbox">
                     <div class="image-container">
-                        <a href="{% url 'post_detail' post.slug %}" style="color:black"> 
+                        <a href="{% url 'post_detail' post.slug %}" style="color:rgb(0, 0, 0)"> 
                         <h4 class="title">{{ post.title }}</h4></a>
                         {% if "placeholder" in post.image.url %}
                         <img src="https://res.cloudinary.com/dpludhery/image/upload/v1703810293/aandelogo_wzij9g.png"/>
@@ -87,7 +87,7 @@
                 </div>
             </div>
             {% empty %}
-                <p>Be the first to post!</p>   
+                <p style="color:rgb(246,246,246)">Be the first to post!</p>   
         {% endfor %} 
     </div>
     <div class="row">
@@ -97,10 +97,10 @@
                 <nav aria-label="Page navigation">
                     <ul class="pagination">
                         {% if page_obj.has_previous %}
-                        <li><a href="?page={{ page_obj.previous_page_number }}" class="page-link btn" style="color:black">&laquo; PREV </a></li>
+                        <li><a href="?page={{ page_obj.previous_page_number }}" class="page-link btn" style="color:rgb(0, 0, 0)">&laquo; PREV </a></li>
                         {% endif %}
                         {% if page_obj.has_next %}
-                        <li><a href="?page={{ page_obj.next_page_number }}" class="page-link btn" style="color:black"> NEXT &raquo;</a></li>
+                        <li><a href="?page={{ page_obj.next_page_number }}" class="page-link btn" style="color:rgb(0, 0, 0)"> NEXT &raquo;</a></li>
                         {% endif %}
                     </ul>
                 </nav>

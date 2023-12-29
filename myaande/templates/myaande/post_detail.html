@@ -28,7 +28,7 @@
         </div>
     </div>
     <div class="row">
-        <div class="col-md-4 order-1 d-flex justify-content-center">
+        <div class="col-md-4 order-1 col-lg-4 justify-content-center">
             <div class="detailinnerbox">
                 <div class="detailimage-container">
                     {% if "placeholder" in post.image.url %}
@@ -44,7 +44,7 @@
                 </div>
             </div>
         </div>
-        <div class="col-md-4 order-2 d-flex justify-content-center">
+        <div class="col-md-4 order-2 col-lg-4 justify-content-center">
             <div class="scroll">
                 <table>
                     {% for comment in comments %}
@@ -72,7 +72,7 @@
                 </table>
             </div>
         </div>
-        <div class="col-md-4 order-3 d-flex justify-content-center">
+        <div class="col-md-4 order-3 col-lg-4 justify-content-center">
             <div class="add">
                 {% if user.is_authenticated %}
                 <h1>Leave a Comment</h1>

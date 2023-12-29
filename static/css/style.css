@@ -1,5 +1,8 @@
+@import url('https://fonts.googleapis.com/css2?family=PT+Serif&display=swap');
+
 body {
     background-color: rgb(247,63,82);
+    font-family: 'PT Serif', serif;
 }
 
 .navbar-custom {
@@ -83,7 +86,7 @@ p {
     text-align: center;
     background-color:rgba(246,246,246,0.4);
     height: 25rem;
-    margin: auto;
+    margin-top: 2rem;
     padding: 1rem;
 }
 
@@ -114,8 +117,13 @@ p {
     font-size: small;
 }
 
-@media screen and (max-width: 900px) {
-
+.authforms {
+    text-align: center;
+    background-color:rgba(246,246,246,0.4);
+    margin: auto;
+    padding: 1rem;
+    max-width: 30rem;
+    margin-bottom: 25rem;
 }
 
 @media screen and (max-width: 600px) {
@@ -123,5 +131,18 @@ p {
         border-radius: 25px;
         padding: 15px;
         height: 10rem;
+    }
+
+    .contactfoot {
+        margin-top: 2rem;
+    }
+    
+    .authforms {
+        text-align: center;
+        background-color:rgba(246,246,246,0.4);
+        margin: auto;
+        padding: 1rem;
+        max-width: 30rem;
+        margin-bottom: 3rem;
     }
 }
