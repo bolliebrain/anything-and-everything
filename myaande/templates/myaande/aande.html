@@ -81,9 +81,9 @@
                         <a href="{% url 'post_detail' post.slug %}" style="color:rgb(0, 0, 0)"> 
                         <h4 class="title">{{ post.title }}</h4></a>
                         {% if "placeholder" in post.image.url %}
-                        <img src="https://res.cloudinary.com/dpludhery/image/upload/v1703810293/aandelogo_wzij9g.png"/>
+                        <img alt="logo image" src="https://res.cloudinary.com/dpludhery/image/upload/v1703810293/aandelogo_wzij9g.png"/>
                         {% else %}
-                        <img src="{{ post.image.url }}">
+                        <img src="{{ post.image.url }}" alt="post picture">
                         {% endif %}
                     </div>
                 </div>
