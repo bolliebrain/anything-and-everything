@@ -12,8 +12,13 @@ class Post(models.Model):
     image = CloudinaryField('image', default='placeholder')
     dateposted = models.DateField(auto_now=True)
 
+    class Meta:
+        ordering = ['-id']
+
     def __str__(self):
         return self.title
+
+    
 
 class Comment(models.Model):
     commentpost = models.ForeignKey(Post, on_delete=models.CASCADE, related_name="aande_comments", null=True)

@@ -49,6 +49,13 @@
         </div>
     </nav>
 
+    <div id="feedback-messages">
+        <div class="alert-success" id="msg">
+            {% for message in messages %}
+                <p>{{ message }}</p>
+            {% endfor %}
+        </div>
+    </div>
     <main>  
     {% block content %}
     

@@ -9,11 +9,6 @@
             <h3>
                 {{ post.title }}
             </h3>
-            <div class="alert-success" id="msg">
-                {% for message in messages %}
-                    <p>{{ message }}</p>
-                {% endfor %}
-            </div>
             <div>
                 <tr>
                     {% if user.is_authenticated and post.user == user %}

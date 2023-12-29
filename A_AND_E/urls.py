@@ -17,6 +17,8 @@ from django.contrib import admin
 from myaande import views
 from django.urls import path, include
 
+handler404 = 'A_AND_E.views.handler404'
+handler500 = 'A_AND_E.views.handler500'
 
 urlpatterns = [
     path('admin/', admin.site.urls),
