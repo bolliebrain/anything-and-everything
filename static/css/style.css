@@ -63,9 +63,7 @@ body {
 
 .contact {
     text-align: center;
-    background-color:rgba(247,63,82,0.4);
-    height: 5rem;
-    padding: 0.5rem;
+    background-color:rgba(246,246,246);
 }
 
 i {
