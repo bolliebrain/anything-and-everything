@@ -87,6 +87,8 @@
                     {% csrf_token %}
                     <button type="submit" class="btn">Add Comment</button>
                 </form>
+                {% else %}
+                <h2>Sign up to Comment on this post!</h2>
                 {% endif %}
             </div>
         </div>
