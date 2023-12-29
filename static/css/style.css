@@ -74,22 +74,24 @@ p {
     text-align: center;
 }
 
+.pager {
+    margin: 0.5rem;
+}
+
 .add {
     text-align: center;
-    background-color:rgba(247,63,82,0.4);
-    width: 25rem;
+    background-color:rgba(246,246,246,0.4);
     height: 30rem;
-    margin-top: 2rem;
+    margin: 2rem;
     margin-bottom: 6rem;
+    padding: 1rem;
 }
 
 .detailinnerbox {
-    background: rgba(247,63,82,0.4);
-    padding: 20px;
-    width: 25rem;
-    height: 30rem;
-    position: relative;
-    margin-top: 2rem;
+    background: rgba(246,246,246,0.4);
+    padding: 1rem;
+    margin: 2rem;
+    overflow: hidden;
 }
 
 .detailimage-container {
@@ -99,17 +101,27 @@ p {
 }
 
 .scroll {
+    background-color: rgb(246,246,246);
     height: 30rem;
     overflow-y: auto;
     overflow-x: hidden;
     margin-top: 2rem;
     text-align: center;
-    margin-bottom: 6rem;
 }
 
 .respond {
     max-width: 25rem;
-    font-size: medium;
-    background-color: rgb(247,63,82);
+    font-size: small;
 }
 
+@media screen and (max-width: 900px) {
+
+}
+
+@media screen and (max-width: 600px) {
+    .innerbox{
+        border-radius: 25px;
+        padding: 15px;
+        height: 10rem;
+    }
+}
