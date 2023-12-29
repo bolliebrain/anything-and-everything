@@ -21,10 +21,10 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="col-md-12">
-                    <h3 class="text-left" style="color:rgb(255, 255, 255)">
+                    <h3 class="text-left" style="color:rgb(247,63,82)">
                         Anything and Everything
                     </h3>
-                    <ul class="nav nav-pills pilltab">
+                    <ul class="nav">
                         <li class="active">
                             <a class="navbar-brand" href="{% url 'seeposts' %}">Home</a>
                         </li>
@@ -33,7 +33,7 @@
                             <a class="navbar-brand" href="{% url 'account_logout' %}">Logout</a>
                         </li>
                         <li class="active">
-                            <a class="navbar-brand" href="{% url 'allmyposts' request.user.username %}">{{ user.username }}</a>
+                            <a class="navbar-brand-user" href="{% url 'allmyposts' request.user.username %}">{{ user.username }}</a>
                         </li>
                         {% else %}
                         <li class="active">

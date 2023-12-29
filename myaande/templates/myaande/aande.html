@@ -4,29 +4,17 @@
 
 <div class="container-fluid">
     <div class="row intro">
-        <div class="col-md-4 d-flex justify-content-center quote">
-            <blockquote class="blockquote">
-                <p class="mb-0">
-                    I found someone local to fix my roof!
-                </p>
-                <footer class="blockquote-footer">
-                    Villagegirl94 <cite>Jan 2023</cite>
-                </footer>
-                <p class="mb-0">
-                    I now have a local Dogwalker
-                </p>
-                <footer class="blockquote-footer">
-                    PetLover <cite>Sussex</cite>
-                </footer>
-            </blockquote>
+        <div class="col-md-4 d-flex justify-content-center about">
+            <h3>
+                About Us
+            </h3>
         </div>
         <div class="col-md-4 d-flex justify-content-center advert">
             <section class ="callout">
-                <p>Buy, Sell, Provide, Exchange or simply Browse!</p>
+                <p style="color:white">Buy, Sell, Provide, Exchange or simply Browse!</p>
                 {% if user.is_authenticated %}
-                <p>{{ user.username }}</p>
                 <button type="button" class="btn btn-lg">
-                    <a href="/addapost">
+                    <a href="/addapost" style="color:black">
                         Add a Post
                     </a>
                 </button>
@@ -35,23 +23,46 @@
                     <a class="navbar-brand" href="{% url 'account_signup' %}">Sign Up</a>
                 </button>
                 {% endif %}
+                <p style="color:white"> Or view the posts below</p>
             </section>
         </div>
         <div class="col-md-4 d-flex justify-content-center quote">
-            <blockquote class="blockquote">
-                <p class="mb-0">
-                    I sold my secondhand computer in a week
-                </p>
+            <div>
+                <h4><u>What our Customers say</u></h4>
+                <blockquote class="blockquote">
+                    <p class="mb-0">
+                        I sold my secondhand computer in a week
+                    </p>
+                </blockquote>
                 <footer class="blockquote-footer">
                     Techwhizz <cite>London</cite>
                 </footer>
-                <p class="mb-0">
+                <blockquote class="blockquote">
+                    <p class="mb-0">
                     Secondhand Furniture for my new home
-                </p>
+                    </p>
+                </blockquote>
                 <footer class="blockquote-footer">
                     Student <cite>2023</cite>
                 </footer>
-            </blockquote>
+                <blockquote class="blockquote">
+                    <p class="mb-0">
+                        I found someone local to fix my roof!
+                    </p>
+                </blockquote>
+                <footer class="blockquote-footer">
+                    Villagegirl94 <cite>Jan 2023</cite>
+                </footer>
+                <blockquote class="blockquote">
+                    <p class="mb-0">
+                        I now have a local Dogwalker
+                    </p>
+                </blockquote>
+                <footer class="blockquote-footer">
+                    PetLover <cite>Sussex</cite>
+                </footer>
+                </tr>
+            </div>
         </div>
     </div>
     <div class="row">
@@ -60,10 +71,10 @@
             <nav aria-label="Page navigation">
                 <ul class="pagination">
                     {% if page_obj.has_previous %}
-                    <li><a href="?page={{ page_obj.previous_page_number }}" class="page-link btn">&laquo; PREV </a></li>
+                    <li><a href="?page={{ page_obj.previous_page_number }}" class="page-link btn" style="color:black">&laquo; PREV </a></li>
                     {% endif %}
                     {% if page_obj.has_next %}
-                    <li><a href="?page={{ page_obj.next_page_number }}" class="page-link btn"> NEXT &raquo;</a></li>
+                    <li><a href="?page={{ page_obj.next_page_number }}" class="page-link btn" style="color:black"> NEXT &raquo;</a></li>
                     {% endif %}
                 </ul>
             </nav>
@@ -75,16 +86,12 @@
             <div class="col-md-2">
                 <div class="innerbox">
                     <div class="image-container">
-                        <a href="{% url 'post_detail' post.slug %}"> 
-                        <h3>{{ post.title }}</h3></a>
+                        <a href="{% url 'post_detail' post.slug %}" style="color:black"> 
+                        <h4 class="title">{{ post.title }}</h4></a>
                         {% if "placeholder" in post.image.url %}
-                        <img src="https://res.cloudinary.com/dpludhery/image/upload/v1703184930/u8zgiso62ww2jbpvklim.webp"/>
+                        <img src="https://res.cloudinary.com/dpludhery/image/upload/v1703810293/aandelogo_wzij9g.png"/>
                         {% else %}
                         <img src="{{ post.image.url }}">
-                        {% endif %}
-                        <p>{{ post.dateposted }}</p>
-                        {% if user.is_authenticated %}
-                            <p>{{ post.user }}</p>
                         {% endif %}
                     </div>
                 </div>
