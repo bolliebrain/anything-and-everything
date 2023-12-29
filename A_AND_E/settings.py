@@ -29,7 +29,7 @@ SECRET_KEY = os.environ.get('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['anything-and-everything-be0c15127928.herokuapp.com', 'localhost', '8000-bolliebrain-anythingand-omczdn6o7cd.ws-eu107.gitpod.io']
+ALLOWED_HOSTS = ['anything-and-everything-be0c15127928.herokuapp.com', 'localhost']
 
 
 # Application definition
@@ -95,12 +95,12 @@ WSGI_APPLICATION = 'A_AND_E.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
-#DATABASES = {
+# DATABASES = {
 #    'default': {
 #        'ENGINE': 'django.db.backends.sqlite3',
 #        'NAME': BASE_DIR / 'db.sqlite3',
 #    }
-#}
+# }
 
 DATABASES = {
     'default': dj_database_url.parse(os.environ.get("DATABASE_URL"))

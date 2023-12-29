@@ -1,8 +1,7 @@
 from django.urls import path, include
-from myaande.views import (AandeView, AandeDetail, 
-    PostAande, EditAande, DeleteAande, EditComment, DeleteComment, AllMyPosts)
+from myaande.views import (AandeView, AandeDetail, PostAande,
+    EditAande, DeleteAande, EditComment, DeleteComment, AllMyPosts)
 from myaande import views
-
 
 
 urlpatterns = [

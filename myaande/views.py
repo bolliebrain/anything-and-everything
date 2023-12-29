@@ -19,6 +19,7 @@ class AandeView(ListView):
     def get_data(self, **kwargs):
         return queryset
 
+
 class AandeDetail(View):
     """
     This view is used to display all posts and comments in post detail page
@@ -30,7 +31,7 @@ class AandeDetail(View):
         print(f'comments {comments}')
 
         return render(
-            request, 
+            request,
             'myaande/post_detail.html',
             {
                 "post": post,
@@ -38,7 +39,7 @@ class AandeDetail(View):
                 "comments": comments,
             },
         )
-    
+
     def post(self, request, slug, *args, **kwargs):
         model = Comment
         form_class = CommentForm
@@ -48,13 +49,13 @@ class AandeDetail(View):
         comments = Comment.objects.filter(commentpost=post.pk)
 
         comment_form = CommentForm(data=request.POST)
-        
+
         if comment_form.is_valid():
             comment = comment_form.save(commit=False)
             comment.user = self.request.user
             comment.commentpost = post
             comment.save()
-            messages.success(self.request, 'Commented Successfully' )
+            messages.success(self.request, 'Commented Successfully')
 
         else:
             comment_form = CommentForm()
@@ -67,6 +68,7 @@ class AandeDetail(View):
                 "comments": comments,
             },
         )
+
 
 class PostAande(CreateView):
     """
@@ -84,13 +86,14 @@ class PostAande(CreateView):
         form_class.instance.user = self.request.user
         form_class.instance.slug = slugify(form_class.cleaned_data['title'])
         return super().form_valid(form_class)
-    
+
     def get_success_url(self):
         """
         Returns user to the post detail view
         """
-        messages.success(self.request, 'Posted Successfully' )
-        return reverse_lazy('post_detail', kwargs={'slug':self.object.slug})
+        messages.success(self.request, 'Posted Successfully')
+        return reverse_lazy('post_detail', kwargs={'slug': self.object.slug})
+
 
 class EditAande(UpdateView):
     """
@@ -99,10 +102,11 @@ class EditAande(UpdateView):
     model = Post
     form_class = PostForm
     template_name = "myaande/edit_post.html"
-    
+
     def get_success_url(self):
-        messages.success(self.request, 'Post Updated Successfully' )
-        return reverse_lazy('post_detail', kwargs={'slug':self.object.slug})
+        messages.success(self.request, 'Post Updated Successfully')
+        return reverse_lazy('post_detail', kwargs={'slug': self.object.slug})
+
 
 class DeleteAande(DeleteView):
     """
@@ -113,7 +117,8 @@ class DeleteAande(DeleteView):
     success_url = "/"
 
     def get_success_url(self):
-        return reverse_lazy('allmyposts', kwargs={'slug':self.object.slug})
+        return reverse_lazy('allmyposts', kwargs={'slug': self.object.slug})
+
 
 class EditComment(UpdateView):
     """
@@ -124,8 +129,10 @@ class EditComment(UpdateView):
     template_name = "myaande/edit_comment.html"
 
     def get_success_url(self):
-        messages.success(self.request, 'Updated Comment Successfully' )
-        return reverse_lazy('post_detail', kwargs={'slug':self.object.commentpost.slug})
+        messages.success(self.request, 'Updated Comment Successfully')
+        return reverse_lazy(
+            'post_detail', kwargs={'slug': self.object.commentpost.slug})
+
 
 class DeleteComment(DeleteView):
     """
@@ -136,7 +143,9 @@ class DeleteComment(DeleteView):
     success_url = '/'
 
     def get_success_url(self):
-        return reverse_lazy('post_detail', kwargs={'slug':self.object.commentpost.slug})
+        return reverse_lazy(
+            'post_detail', kwargs={'slug': self.object.commentpost.slug})
+
 
 class AllMyPosts(View):
     """
@@ -148,9 +157,9 @@ class AllMyPosts(View):
     def get(self, request, slug, *args, **kwargs):
         queryset = Post.objects.filter(user=request.user)
         print(queryset)
-        
+
         return render(
-            request, 
+            request,
             'myaande/allmyposts.html',
             {
                  "posts": queryset,
