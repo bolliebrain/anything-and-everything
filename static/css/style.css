@@ -26,6 +26,7 @@ body {
 
 .btn {
     background-color: rgb(246,246,246);
+    border-color: black;
 }
 
 .innerbox {
@@ -81,9 +82,8 @@ p {
 .add {
     text-align: center;
     background-color:rgba(246,246,246,0.4);
-    height: 30rem;
-    margin: 2rem;
-    margin-bottom: 6rem;
+    height: 25rem;
+    margin: auto;
     padding: 1rem;
 }
 
@@ -102,7 +102,7 @@ p {
 
 .scroll {
     background-color: rgb(246,246,246);
-    height: 30rem;
+    height: 35rem;
     overflow-y: auto;
     overflow-x: hidden;
     margin-top: 2rem;
@@ -110,7 +110,7 @@ p {
 }
 
 .respond {
-    max-width: 25rem;
+    width: 25rem;
     font-size: small;
 }
 
