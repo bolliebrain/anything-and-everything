@@ -8,9 +8,9 @@ from django.contrib import messages
 from .models import Post, Comment
 from .forms import PostForm, CommentForm
 
-# Create your views here.
 
 class AandeView(ListView):
+    """This view is used to display the posts in home page"""
     model = Post
     template_name = 'myaande/aande.html'
     queryset = Post.objects.all()
@@ -20,6 +20,9 @@ class AandeView(ListView):
         return queryset
 
 class AandeDetail(View):
+    """
+    This view is used to display all posts and comments in post detail page
+    """
     def get(self, request, slug, *args, **kwargs):
         queryset = Post.objects.all()
         post = get_object_or_404(queryset, slug=slug)
@@ -66,32 +69,45 @@ class AandeDetail(View):
         )
 
 class PostAande(CreateView):
+    """
+    This creates a post
+    """
     model = Post
     form_class = PostForm
     template_name = 'myaande/add_post.html'
     success_url = "/"
-#    success_message = "Posted Successfully"
 
     def form_valid(self, form_class):
+        """
+        slugify the post title and saves user
+        """
         form_class.instance.user = self.request.user
         form_class.instance.slug = slugify(form_class.cleaned_data['title'])
         return super().form_valid(form_class)
     
     def get_success_url(self):
+        """
+        Returns user to the post detail view
+        """
         messages.success(self.request, 'Posted Successfully' )
         return reverse_lazy('post_detail', kwargs={'slug':self.object.slug})
 
 class EditAande(UpdateView):
+    """
+    User can edit their post and returns back to the post detail view
+    """
     model = Post
     form_class = PostForm
     template_name = "myaande/edit_post.html"
-#   success_message = "Post Updated Successfully"
     
     def get_success_url(self):
         messages.success(self.request, 'Post Updated Successfully' )
         return reverse_lazy('post_detail', kwargs={'slug':self.object.slug})
 
 class DeleteAande(DeleteView):
+    """
+    User can delete their post and return to home
+    """
     model = Post
     template_name = "myaande/post_confirm_delete.html"
     success_url = "/"
@@ -100,16 +116,21 @@ class DeleteAande(DeleteView):
         return reverse_lazy('allmyposts', kwargs={'slug':self.object.slug})
 
 class EditComment(UpdateView):
+    """
+    User can edit their comment and return to post detail view
+    """
     model = Comment
     form_class = CommentForm
     template_name = "myaande/edit_comment.html"
-#    success_message = "Updated Comment Successfully"
 
     def get_success_url(self):
         messages.success(self.request, 'Updated Comment Successfully' )
         return reverse_lazy('post_detail', kwargs={'slug':self.object.commentpost.slug})
 
 class DeleteComment(DeleteView):
+    """
+    User can delete their comment return to post detail view
+    """
     model = Comment
     template_name = "myaande/comment_confirm_delete.html"
     success_url = '/'
@@ -118,6 +139,9 @@ class DeleteComment(DeleteView):
         return reverse_lazy('post_detail', kwargs={'slug':self.object.commentpost.slug})
 
 class AllMyPosts(View):
+    """
+    User can view all their posts
+    """
     model = Post
     template_name = "myaande/allmyposts.html"
 

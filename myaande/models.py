@@ -2,7 +2,6 @@ from django.db import models
 from django.contrib.auth.models import User
 from cloudinary.models import CloudinaryField
 
-# Create your models here.
 
 class Post(models.Model):
     title = models.CharField(max_length=20, null=False, blank=False, unique=True)
@@ -13,6 +12,7 @@ class Post(models.Model):
     dateposted = models.DateField(auto_now=True)
 
     class Meta:
+        """ To display posts by newest created first"""
         ordering = ['-id']
 
     def __str__(self):
