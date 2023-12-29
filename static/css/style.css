@@ -40,10 +40,6 @@ body {
     position: relative;
 }
 
-.title {
-    text-align: center;
-}
-
 .pagination {
     justify-content: center;
 }
