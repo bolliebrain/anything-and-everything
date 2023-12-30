@@ -50,34 +50,36 @@
         <div class="col-md-4 order-2 col-lg-4 justify-content-center">
             <div class="scroll">
                 <table>
-                    {% for comment in comments %}
-                        <tr>
-                            <th rowspan="4" class="respond" style="display:none"></th>
-                            <td><b>By: {{ comment.user }}</b></td>
-                        </tr>
-                        <tr>
-                            <td>{{ comment.comment }}</td>
-                        </tr>
-                        <tr>
-                            <td><i>{{ comment.datecommented }}</i></td>
-                        </tr>
-                        {% if user.is_authenticated and comment.user == user %}
+                    <tbody>
+                        {% for comment in comments %}
                             <tr>
-                                <td>
-                                    <a href="{% url 'edit_comment' comment.id %}" class="btn">
-                                        Edit
-                                    </a>
-                                    <a href="{% url 'delete_comment' comment.id %}" class="btn">
-                                        Delete
-                                    </a>
-                                </td>
+                                <th rowspan="4" class="respond" style="display:none"></th>
+                                <td><b>By: {{ comment.user }}</b></td>
                             </tr>
-                        {% endif %}
-                    {% empty %}
-                        <tr>
-                            <p>Be the first to comment!</p>   
-                        </tr>
-                    {% endfor %}
+                            <tr>
+                                <td>{{ comment.comment }}</td>
+                            </tr>
+                            <tr>
+                                <td><i>{{ comment.datecommented }}</i></td>
+                            </tr>
+                            {% if user.is_authenticated and comment.user == user %}
+                                <tr>
+                                    <td>
+                                        <a href="{% url 'edit_comment' comment.id %}" class="btn">
+                                            Edit
+                                        </a>
+                                        <a href="{% url 'delete_comment' comment.id %}" class="btn">
+                                            Delete
+                                        </a>
+                                    </td>
+                                </tr>
+                            {% endif %}
+                        {% empty %}
+                            <tr>
+                                <p>Be the first to comment!</p>   
+                            </tr>
+                        {% endfor %}
+                    </tbody>
                 </table>
             </div>
         </div>
