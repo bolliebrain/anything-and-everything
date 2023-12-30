@@ -15,18 +15,12 @@ The site acts as a area where users can communicate with other users.
 - [Design](#design)
 - [Agile Methodology](#agile-methodology)
 - [Data Model](#datamodel)
-    *[Testing]
-    *[Security Features and Defensive Design]
-        -[User Authentication]
-        -[Form Validation]
-        -[Database Security]
-        -[Custom Error Pages]
-
+- [Testing](#Testing)
+- [Security Features and Defensive Design](#security-features-and-defensive-design)
 - [Deployment](#deployment)
-
-    *[Frameworks - Libraries - Programes Used]
-    *[Credits]
-    *[Acknowledgements]
+- [Frameworks - Libraries - Programmes Used](#frameworks-libraries-programes-used)
+- [Credits](#credits)
+- [Acknowledgements](#acknowledgements)
 
 ## **User Experience (UX)**
 
@@ -249,14 +243,44 @@ All HTML pages were run through the [W3C HTML Validator](https://validator.w3.or
 
 ### CSS Test Results
 
+- No errors were found when passing my CSS file through the official [W3C CSS Validator](https://jigsaw.w3.org/css-validator/validator)
 
-    *[Testing]
-    *[Security Features and Defensive Design]
-        -[User Authentication]
-        -[Form Validation]
-        -[Database Security]
-        -[Custom Error Pages]
+![heading](docs/images/tests/css.png)
 
+### Javascript
+
+- No errors were found when passing my javascript through [Jshint](https://jshint.com/)
+
+![heading](docs/images/tests/jstest.png)
+
+### Python
+
+- All Python files were run through [Pep8](https://pep8ci.herokuapp.com/) with no errors found.
+
+### Lighthouse
+
+- Lighthouse validation was run on all pages in order to check accessibility and performance.
+
+![heading](docs/images/tests/lighthouse.png)
+
+### Browser Testing
+
+- The Website was tested on Google Chrome, Firefox, Safari browsers with no issues noted.
+
+### Manual Testing
+
+![heading](docs/images/tests/manualtesting.png)
+
+## Security Features and Defensive Design
+
+### Form Validation
+
+- If incorrect or empty data is added to a form, the form won't submit and a warning will appear to the user informing them what field raised the error.
+
+### Database Security
+
+- The database url and secret key are stored in the env.py file to prevent unwanted connections to the database and this was set up before the first push to Github. 
+- Cross-Site Request Forgery (CSRF) tokens were used on all forms throughout this site.
 
 ## Deployment - Heroku
 
@@ -322,8 +346,37 @@ Add the following Config Vars in Heroku:
 6. Type 'Enter' to create the local clone.
 
 ### Languages Used
-
 - Python
 - HTML
 - CSS
 - Javascript
+
+## Frameworks - Libraries - Programmes Used
+- [Django](https://www.djangoproject.com/): Main python framework used in the development of this project
+- [Django-allauth](https://django-allauth.readthedocs.io/en/latest/installation.html): authentication library used to create the user accounts
+- [PostgreSQL](https://www.postgresql.org/) was used as the database for this project.
+- [Heroku](https://dashboard.heroku.com/login) - was used as the cloud based platform to deploy the site on.
+- [Balsamiq](https://balsamiq.com/) - Used to generate Wireframe images.
+- [Font Awesome](https://fontawesome.com/) - Used for icons in information bar.
+- [GitHub](https://github.com/) - Used for version control and agile tool.
+- [Google Fonts](https://fonts.google.com/) - Used to import and alter fonts on the page.
+- [W3C](https://www.w3.org/) - Used for HTML & CSS Validation.
+- [PEP8 Online](http://pep8online.com/) - used to validate all the Python code
+- [Jshint](https://jshint.com/) - used to validate javascript
+- [Lucidchart](https://lucid.app/documents#/dashboard) - used to create the database schema design
+- [Techsini](https://techsini.com/multi-mockup/index.php) - Site mockup generator
+- [Crispy Forms](https://django-crispy-forms.readthedocs.io/en/latest/) used to manage Django Forms
+- [Cloudinary](https://cloudinary.com/): the image hosting service used to upload images
+- [Bootstrap 4.6](https://getbootstrap.com/docs/4.6/getting-started/introduction/): CSS Framework for developing responsiveness and styling
+- [Hatchful](https://hatchful.shopify.com/): Used to generate custom logo
+
+## Credits
+
+- [W3Schools](https://www.w3schools.com/)
+- [Django Docs](https://docs.djangoproject.com/en/4.0/)
+- [Bootstrap 4.6 Docs](https://getbootstrap.com/docs/4.6/getting-started/introduction/)
+- [Stack Overflow](https://stackoverflow.com/)
+- [Code Institute - Blog Walkthrough Project](https://github.com/Code-Institute-Solutions/Django3blog)
+
+## Acknowledgements
+- Huge thank you to Anto for all of his support.
