@@ -51,9 +51,14 @@
             <div class="scroll">
                 <table>
                     {% for comment in comments %}
-                        <tr rowspan="3" class="respond">
+                        <tr>
+                            <th rowspan="3" class="respond"></th>
                             <td>By: {{ comment.user }}</td>
+                        </tr>
+                        <tr>
                             <td>{{ comment.comment }}</td>
+                        </tr>
+                        <tr>
                             <td><i>{{ comment.datecommented }}</i></td>
                         </tr>
                         <tr>
