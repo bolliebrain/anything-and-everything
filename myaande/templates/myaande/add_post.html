@@ -4,16 +4,14 @@
 
 <div class="container authforms">
     <h3>Add a post!</h3>
+    {% load cloudinary %}
     <div>
-        {% load cloudinary %}
-        <div>
-            <form method="POST" action="addapost" enctype="multipart/form-data">
-                {{ form | crispy }}
-                {% csrf_token %}
-                    <button type="submit">Add Post</button>
-                </div>
-            </form>
-        </div>
+        <form method="POST" action="addapost" enctype="multipart/form-data">
+            {{ form | crispy }}
+            {% csrf_token %}
+                <button type="submit">Add Post</button>
+            </div>
+        </form>
     </div>
 </div>
 {% endblock %}
