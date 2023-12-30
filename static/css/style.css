@@ -74,6 +74,10 @@ p {
     text-align: center;
 }
 
+td {
+    align: left;
+}
+
 .pager {
     margin: 0.5rem;
 }

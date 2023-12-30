@@ -53,16 +53,16 @@
                     {% for comment in comments %}
                         <tr>
                             <th rowspan="3" class="respond" style="display:none"></th>
-                            <td align="left">By: {{ comment.user }}</td>
+                            <td>By: {{ comment.user }}</td>
                         </tr>
                         <tr>
-                            <td align="left">{{ comment.comment }}</td>
+                            <td>{{ comment.comment }}</td>
                         </tr>
                         <tr>
-                            <td align="left"><i>{{ comment.datecommented }}</i></td>
+                            <td><i>{{ comment.datecommented }}</i></td>
                         </tr>
+                        {% if user.is_authenticated and comment.user == user %}
                         <tr>
-                            {% if user.is_authenticated and comment.user == user %}
                             <a href="{% url 'edit_comment' comment.id %}">
                                     <button type="button" class="btn">Edit</button>
                             </a>
@@ -70,10 +70,10 @@
                                     <button type="button" class="btn">Delete</button>
                             </a>
                         </tr>
+                        {% endif %}
                         <hr>
+                        {% empty %}
                         <tr>
-                            {% endif %}
-                            {% empty %}
                             <p>Be the first to comment!</p>   
                         </tr>
                     {% endfor %}
@@ -92,9 +92,7 @@
                     <button type="submit" class="btn">Add Comment</button>
                 </form>
                 {% else %}
-                <button type="button" class="btn btn-lg">
-                    <a href="{% url 'account_signup' %}" style="color:black">Sign-up to Comment</a>
-                </button>
+                <a href="{% url 'account_signup' %}" class="btn btn-lg" style="color:black">Sign-up to Comment</a>
                 {% endif %}
             </div>
         </div>
