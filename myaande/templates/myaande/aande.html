@@ -25,11 +25,9 @@
                 </a>
                 </button>
                 {% else %}
-                <button type="button" class="btn btn-lg">
-                    <a href="{% url 'account_signup' %}" style="color:rgb(0, 0, 0)">
+                    <a href="{% url 'account_signup' %}" style="color:rgb(0, 0, 0)" class="btn btn-lg">
                         Sign-up
                     </a>
-                </button>
                 {% endif %}
                 <p style="color:rgb(255, 255, 255)"> Or view the posts below</p>
             </div>
