@@ -52,14 +52,14 @@
                 <table>
                     {% for comment in comments %}
                         <tr>
-                            <th rowspan="3" class="respond" style="visibility:collapse"></th>
-                            <td>By: {{ comment.user }}</td>
+                            <th rowspan="3" class="respond" style="display:none"></th>
+                            <td align="left">By: {{ comment.user }}</td>
                         </tr>
                         <tr>
-                            <td>{{ comment.comment }}</td>
+                            <td align="left">{{ comment.comment }}</td>
                         </tr>
                         <tr>
-                            <td><i>{{ comment.datecommented }}</i></td>
+                            <td align="left"><i>{{ comment.datecommented }}</i></td>
                         </tr>
                         <tr>
                             {% if user.is_authenticated and comment.user == user %}
