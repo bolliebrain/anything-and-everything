@@ -130,6 +130,10 @@ td {
     margin-bottom: 25rem;
 }
 
+.myposts {
+    margin-bottom: 5rem;
+}
+
 @media screen and (max-width: 600px) {
     .innerbox{
         border-radius: 25px;
