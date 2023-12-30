@@ -48,8 +48,8 @@
         </div>
         <!-- Comments on the post-->
         <div class="col-md-4 order-2 col-lg-4 justify-content-center">
-            <div class="scroll">
-                {% for comment in comments %}
+            {% for comment in comments %}
+                <div class="scroll">
                     <table>
                         <tr>
                             <th rowspan="4" class="respond" style="display:none"></th>
@@ -78,8 +78,8 @@
                             <p>Be the first to comment!</p>   
                         </tr>
                     </table>
-                {% endfor %}
-            </div>
+                </div>
+            {% endfor %}
         </div>
         <!-- Add comment if authenticated or signup -->
         <div class="col-md-4 order-3 col-lg-4 justify-content-center">
