@@ -51,10 +51,10 @@
             <div class="scroll">
                 <table>
                     {% for comment in comments %}
-                        <tr class="respond">
-                            <strong>By: {{ comment.user }}</strong>
-                            {{ comment.comment }}
-                            <i>{{ comment.datecommented }}</i>
+                        <tr rowspan="3" class="respond">
+                            <td>By: {{ comment.user }}</td>
+                            <td>{{ comment.comment }}</td>
+                            <td><i>{{ comment.datecommented }}</i></td>
                         </tr>
                         <tr>
                             {% if user.is_authenticated and comment.user == user %}
