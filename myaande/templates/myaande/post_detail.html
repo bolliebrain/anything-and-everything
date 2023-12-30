@@ -63,7 +63,7 @@
                                 <td><i>{{ comment.datecommented }}</i></td>
                             </tr>
                             {% if user.is_authenticated and comment.user == user %}
-                                <tr>
+                                <tr class="flexy">
                                     <td>
                                         <a href="{% url 'edit_comment' comment.id %}" class="btn">
                                             Edit

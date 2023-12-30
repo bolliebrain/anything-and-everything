@@ -112,6 +112,10 @@ td {
     text-align: center;
 }
 
+.flexy {
+    display: block;
+}
+
 .respond {
     width: 25rem;
     font-size: small;
