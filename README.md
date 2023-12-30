@@ -6,7 +6,7 @@ Anything and Everything is a advertising app for users who wish to post about it
 
 The site acts as a area where users can communicate with other users.
 
-![Mockup]
+![header](docs/images/mockup/mockup.png)
 
 ![Colour Palette] ()insert colour Palette here
 
@@ -102,17 +102,85 @@ A Visitor to Anything and Everything would be someone who is likely to want to b
 
 ![header](docs/images/features/homesignedin.png)
 
+### User Account Pages
 
-   *[Features]
-        - User Account Pages
-        - Post Detail Page
-        - Add Post Form
-        - Add Comment Form
-        - Update Post Form
-        - Update Comment Form
-        - Delete Post
-        - Delete Comment
-        - Future Features
+**Sign Up**
+![header](docs/images/features/signup.png)
+
+**Sign In**
+![header](docs/images/features/signin.png)
+
+**Sign Out**
+![header](docs/images/features/signout.png)
+
+- Django allauth was installed and used to create the Signup, Signin and Signout functionality.
+- Success messages inform the user if they have signed in and signed out successfully.
+
+### Browse Posts
+
+![header](docs/images/features/browseallusers.png)
+
+- The homepage displays all posts with the most recent post displayed first. 
+- There is pagination applied to which users can click "Next" and "Prev" after 6 posts.
+- Each post displays the post image with a default image of the logo if one hasnt been uploaded.
+- Clicking on the title of the post will take you directly to that post detail page.
+
+### User Posts
+
+![header](docs/images/features/userposts.png)
+
+- Upon signing in, the user will be able to click their username on the nav bar which takes them to their own posts.
+- As well as the home page, they will be able to add a post here also.
+
+### Post Detail Page
+
+![header](docs/images/features/postdetailloggedout.png)
+
+- The Post Header section shows the name of the post that the user is viewing.
+- The post detail page is split into three sections - the post detail itself, comments detail and the comments form.
+- If a user is not signed up or logged in, it will display a button to encourage the user to sign up.
+- Once the user is signed in, they will be able to see the comment form.
+
+### Comments
+
+![header](docs/images/features/postdetailloggedin.png)
+
+**Add a Comment**
+- When the user has completed the comment form and clicked 'Add Comment', a new line will appear in the comments section.This will show the username, the comment itself and a date time stamp.
+- The user will receive a success message notifying them that the comment has been successful.
+- Failing to fill out the comment form correctly will result in the form failing and rendering a message stating what you have missed.
+- Comments can only be left if the user is logged in.
+
+**Update/Delete a Comment**
+
+![header](docs/images/features/editcomment.png)
+- Users can only update or delete their own comments once logged in.
+
+![header](docs/images/features/editcomment2.png)
+![header](docs/images/features/deletecomment.png)
+
+- The user receives a success message notifying them that the comment has been successfully updated or deleted.
+
+### Add a Post
+
+![header](docs/images/features/addpost.png)
+
+- If the user is logged in, they can add a post by clicking the link on the home page or their user account page located on the nav bar.
+- The user can upload an image if they wish. If they choose not to, a default imafe displays as their post image.
+- Failing to fill out the form correctly will result in the form failing and rendering a message stating which fields you have missed.
+
+### Update/ Delete a Post
+
+- The post view will display the Edit or Delete option in the top left underneath the title.
+- Only the user who created the post can Edit or Delete.
+- The User will receive a success message notifying them that the recipe has been successfully updated.
+
+**Update Post**
+![header](docs/images/features/editpost1.png)
+
+**Delete Post**
+![header](docs/images/features/deletepost.png)
+
 
 
 
