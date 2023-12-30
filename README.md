@@ -239,7 +239,12 @@ All HTML pages were run through the [W3C HTML Validator](https://validator.w3.or
 #### Comments
 
 - Note 1 - the slash was provided as part of the link when copying from cloudinary. I have confirmed with tutor that this is ok.
+
+![header](docs/images/tests/note1.png)
+
 - Note 2 - I have checked this error with tutor - all of the comments are linked to one another and this is something just to be mindful of.
+
+![header](docs/images/tests/note2.png)
 
 ### CSS Test Results
 
