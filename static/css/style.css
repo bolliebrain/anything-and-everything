@@ -75,7 +75,7 @@ p {
 }
 
 td {
-    align: left;
+    text-align: left;
 }
 
 .pager {
