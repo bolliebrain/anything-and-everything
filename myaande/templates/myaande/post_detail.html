@@ -53,7 +53,7 @@
                     {% for comment in comments %}
                         <tr>
                             <th rowspan="4" class="respond" style="display:none"></th>
-                            <td>By: {{ comment.user }}</td>
+                            <td><b>By: {{ comment.user }}</b></td>
                         </tr>
                         <tr>
                             <td>{{ comment.comment }}</td>
@@ -71,7 +71,6 @@
                                     Delete
                                 </a>
                             </td>
-                            <hr>
                         </tr>
                         {% endif %}
                         {% empty %}
