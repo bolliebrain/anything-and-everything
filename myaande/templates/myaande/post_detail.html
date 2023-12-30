@@ -64,15 +64,15 @@
                         {% if user.is_authenticated and comment.user == user %}
                         <tr>
                             <td>
-                                <a href="{% url 'edit_comment' comment.id %}">
-                                        <button type="button" class="btn">Edit</button>
+                                <a href="{% url 'edit_comment' comment.id %}" class="btn">
+                                    Edit
                                 </a>
-                                <a href="{% url 'delete_comment' comment.id %}">
-                                        <button type="button" class="btn">Delete</button>
+                                <a href="{% url 'delete_comment' comment.id %}" class="btn">
+                                    Delete
                                 </a>
                             </td>
+                            <hr>
                         </tr>
-                        <hr>
                         {% endif %}
                         {% empty %}
                         <tr>
