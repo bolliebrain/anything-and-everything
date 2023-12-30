@@ -52,7 +52,7 @@
                 <table>
                     {% for comment in comments %}
                         <tr>
-                            <th rowspan="3" class="respond" style="display:none"></th>
+                            <th rowspan="4" class="respond" style="display:none"></th>
                             <td>By: {{ comment.user }}</td>
                         </tr>
                         <tr>
@@ -63,12 +63,14 @@
                         </tr>
                         {% if user.is_authenticated and comment.user == user %}
                         <tr>
-                            <a href="{% url 'edit_comment' comment.id %}">
-                                    <button type="button" class="btn">Edit</button>
-                            </a>
-                            <a href="{% url 'delete_comment' comment.id %}">
-                                    <button type="button" class="btn">Delete</button>
-                            </a>
+                            <td>
+                                <a href="{% url 'edit_comment' comment.id %}">
+                                        <button type="button" class="btn">Edit</button>
+                                </a>
+                                <a href="{% url 'delete_comment' comment.id %}">
+                                        <button type="button" class="btn">Delete</button>
+                                </a>
+                            </td>
                         </tr>
                         {% endif %}
                         <hr>
